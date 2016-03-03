@@ -27,6 +27,7 @@ public class aboutActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("About The App");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //vfvtvv
 
         //holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.circlepicker);
         //holoCircleSeekBar.setValue(5);
