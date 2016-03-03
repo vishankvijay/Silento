@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    tools:context="com.example.silento.aboutActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/action_bar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Developed By :"
+        android:id="@+id/textView_developed"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="121dp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"/>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Vishank Vijay Fidelis"
+        android:id="@+id/textView_name"
+        android:layout_below="@+id/textView_developed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blue"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="CSE"
+        android:id="@+id/textView_branch"
+        android:layout_below="@+id/textView_name"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Kiit University"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textView_branch"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blue"/>
+
+
+
+
+</RelativeLayout>

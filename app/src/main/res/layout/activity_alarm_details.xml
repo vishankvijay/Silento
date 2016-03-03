@@ -1,0 +1,516 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_alarm_details_layout"
+    tools:context="com.example.silento.AlarmDetails">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="#EEEEEE"
+        >
+        <!--
+                <TextView
+                    android:id="@+id/profileNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Enter Profile Name:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/black" />-->
+
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/carview_with_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#fff"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            >
+
+        <EditText
+            android:id="@+id/profileNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="Give a name to your Event : "
+            android:inputType="textEmailAddress"
+            android:backgroundTint="@color/blue"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="18dp"
+            android:singleLine="true" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+<!--
+            <include layout="@layout/horizontal_divider_view"
+                android:id="@+id/divider_below_buttons"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                />-->
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/carview_with_buttons"
+                android:layout_below="@id/carview_with_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardBackgroundColor="#fff"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="3dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/carview_with_edittext"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    android:padding="18dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linear_containing_buttons"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+
+
+
+
+
+            <Button
+                android:id="@+id/startTimeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight=".5"
+                android:width="140dp"
+                android:text="From"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:background="@drawable/my_custom_button"/>
+
+            <Button
+                android:id="@+id/endTimeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight=".5"
+                android:text="Till"
+                android:width="140dp"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:background="@drawable/my_custom_button"
+                />
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_containing_chechkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_containing_buttons"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:visibility="visible">
+
+<!--
+            <include layout="@layout/horizontal_divider_view"
+                android:id="@+id/divider_below_buttons"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+
+                />
+-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daysEnabledTextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_containing_buttons"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"
+                android:text="Days Enabled:"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/test">
+
+              <!--  <CheckBox
+                    android:id="@+id/sundayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#607D8B"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />-->
+
+
+                <!--<CheckBox
+                    android:id="@+id/MondayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/TuesdayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/wednesdayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/thursdayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/fridayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />
+
+                <CheckBox
+                    android:id="@+id/saturdayCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@drawable/custom_checkbox_design"
+                    android:checked="false" />-->
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/sundayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cbd_strokeColor = "@color/primaryColor" />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/MondayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cbd_strokeColor = "#D56E83"
+                    />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/TuesdayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cbd_strokeColor = "@color/primaryColor"
+                    />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/wednesdayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cbd_strokeColor = "#D56E83"
+                    android:layout_weight="1"/>
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/thursdayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cbd_strokeColor = "@color/primaryColor"
+                    />
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/fridayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cbd_strokeColor = "#D56E83"
+                    android:layout_weight="1"/>
+
+                <com.rey.material.widget.CheckBox
+                    android:id="@+id/saturdayCheckBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cbd_strokeColor = "@color/primaryColor"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sundayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sun"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/mondayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mon"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/tuesdayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tue"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/wednesdayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Wed"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/thursdayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Thu"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/fridayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fri"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/saturdayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sat"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/carview_with_profile_types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#fff"
+            android:layout_below="@id/carview_with_buttons"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/layout_containing_profile_types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carview_with_buttons"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+<!--
+            <include layout="@layout/horizontal_divider_view"
+                android:id="@+id/divider_below_checkbox"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+-->
+
+
+
+            <TextView
+                android:id="@+id/start_profileTypeTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/layout_containing_chechkbox"
+
+                android:text="Start Profile Type :"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black" />
+
+            <RadioGroup
+                android:id="@+id/start_profileRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/start_profileTypeTextview"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/start_vibrationRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Vibration" />
+
+                <RadioButton
+                    android:id="@+id/start_silentRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Silent" />
+
+                <RadioButton
+                    android:id="@+id/start_NormalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Normal" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/end_profileTypeTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/sundayTextView"
+                android:layout_alignStart="@+id/sundayTextView"
+                android:layout_below="@+id/start_profileRadioGroup"
+                android:layout_marginTop="14dp"
+                android:text="End Profile Type :"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/black" />
+
+            <RadioGroup
+                android:id="@+id/end_profileRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/end_profileTypeTextview"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/end_vibrationRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Vibration" />
+
+                <RadioButton
+                    android:id="@+id/end_silentRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Silent" />
+
+                <RadioButton
+                    android:id="@+id/end_NormalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Normal" />
+            </RadioGroup>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:id="@+id/snackbar"
+    tools:context="com.example.silento.QuickSilentoActivity">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#355C7D"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!--<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardBackgroundColor="#fff"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="3dp"
+        card_view:cardElevation="5dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="12dp">-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_below="@id/toolbar">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Looks like you are busy. Tell us the duration and we will quickly manage your profile !"
+            android:textColor="#000"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textView_tell" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/quick_silento_button"
+            android:layout_below="@id/textView_tell"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Set Duration"
+            android:textColor="#fff"
+            android:background="@drawable/my_custom_button"
+            android:textAllCaps="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_what_profile"
+            android:layout_below="@id/quick_silento_button"
+            android:layout_marginTop="35dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="what profile do you want for the next "
+                android:id="@+id/textview_what_profile"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+
+            <RadioGroup
+                android:id="@+id/quick_silento_start_profileRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_what_profile"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/quick_silento_start_vibrationRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Vibration" />
+
+                <RadioButton
+                    android:id="@+id/quick_silento_start_silentRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:text="Silent" />
+
+                <RadioButton
+                    android:id="@+id/quick_silento_start_NormalRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Normal" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+  <!--  </android.support.v7.widget.CardView>-->
+
+
+</RelativeLayout>
