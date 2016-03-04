@@ -122,7 +122,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
             {
                 if(!s.toString().equals("") && count_layout_containing_buttons == 0)
                 {
-                    TranslateAnimation animate = new TranslateAnimation(carview_with_buttons.getWidth(), 0, 0, 0);
+                    TranslateAnimation animate = new TranslateAnimation(0, 0, 3*carview_with_buttons.getHeight(), 0);
                     animate.setDuration(400);
                     animate.setFillAfter(true);
                     carview_with_buttons.startAnimation(animate);
@@ -351,12 +351,21 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                 //Toast.makeText(AlarmDetails.this, "Select Start  Profile Type", Toast.LENGTH_SHORT).show();
                             }
                             // toastCount = 1;
-                            if (start_selectedRadioButton != null && end_selectedRadioButton != null) {
+                            if (start_selectedRadioButton != null && end_selectedRadioButton != null)
+                            {
 
                                 repeat.putExtra("status", 1);
 
-                                setResult(Activity.RESULT_OK, repeat);
-                                finish();
+                                //setResult(Activity.RESULT_OK, repeat);
+                                dataBaseManipulator = new DataBaseManipulator(this);
+                                dataBaseManipulator.alarmsave(repeat);
+                                dataBaseManipulator.close();
+
+                                Intent serviceIntent = new Intent(AlarmDetails.this, MyAlarm.class);
+                                serviceIntent.setAction("setAlarm");
+
+                                startService(serviceIntent);
+                                onBackPressed();
 
 
                             }

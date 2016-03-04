@@ -50,7 +50,7 @@ import java.util.Calendar;
 
 
 
-public class AlarmList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+public class AlarmList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private FloatingActionButton addAlarmFab;
@@ -111,7 +111,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AlarmList.this, AlarmDetails.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, 0);
             }
         });
@@ -127,7 +127,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
 
         if (hasFocus && animation_count == 0) {
             TranslateAnimation translateAnimation = new TranslateAnimation(2 * addAlarmFab.getWidth(), 0, 0, 0);
-            translateAnimation.setDuration(800);
+            translateAnimation.setDuration(700);
             translateAnimation.setFillAfter(true);
             addAlarmFab.startAnimation(translateAnimation);
             addAlarmFab.setVisibility(View.VISIBLE);
@@ -625,7 +625,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
         return false;
     }
 
-    @Override
+    /*@Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         dataBaseManipulator = new DataBaseManipulator(this);
@@ -703,7 +703,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
         delete_alarm.close();
         dataBaseManipulator.close();
         return true;
-    }
+    }*/
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -712,7 +712,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
 
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -741,7 +741,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
 
         startService(serviceIntent);
 
-    }
+    }*/
 
     @Override
     protected void onPause() {

@@ -341,10 +341,29 @@ public class MyAlarmBroadcast extends BroadcastReceiver{
                 {
                  am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                 }
-                else if(profileType_2.equals(""))
+                else if(profileType_2.equals("Normal"))
                 {
                     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                   //  Toast.makeText(context, "Maaza aa gaya", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+
+                    SharedPreferences sharedPreferences_quick_2 = context.getSharedPreferences("QuickData", Context.MODE_PRIVATE);
+                    int quick_silento_profile_if_not_conflicting = sharedPreferences_quick_2.getInt("quick_silento_profile_if_not_conflicting", 2);
+
+                    switch (quick_silento_profile_if_not_conflicting)
+                    {
+                        case 0:     am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                            break;
+
+                        case 1:     am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                            break;
+
+                        case 2:     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                            break;
+                    }
+
                 }
 
                // Toast.makeText(context, "2 " + profileType_2, Toast.LENGTH_SHORT).show();
@@ -375,7 +394,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver{
     private void showNotification(Context context)
     {
         SharedPreferences sharedPreferences_quick_1 = context.getSharedPreferences("QuickData", Context.MODE_PRIVATE);
-        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , false);
+        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , true);
 
         if(get_notification_state) {
             Intent notifIntent = new Intent(context, AlarmList.class);

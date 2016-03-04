@@ -180,13 +180,13 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Wait!!");
-
+/*
                 String first = "Delete the Event ";
                 String next = "<font color='#E91E63'>" + alarmTitle_delete + "</font>";
                 String last = " ?";
-                //t.setText(Html.fromHtml(first + next));
+                //t.setText(Html.fromHtml(first + next));*/
 
-                builder.setMessage(Html.fromHtml(first + next + last));
+                builder.setMessage(Html.fromHtml("Delete the Event " + alarmTitle_delete + " ?"));
 
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 

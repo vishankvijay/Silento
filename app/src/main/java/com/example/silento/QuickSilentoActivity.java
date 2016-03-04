@@ -349,7 +349,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
     private void showNotification(Calendar calendar)
     {
         SharedPreferences sharedPreferences_quick_1 = getSharedPreferences("QuickData", Context.MODE_PRIVATE);
-        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , false);
+        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , true);
 
 
         if(get_notification_state) {

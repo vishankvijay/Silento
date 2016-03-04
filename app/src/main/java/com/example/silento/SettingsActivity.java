@@ -61,7 +61,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         listview = (ListView) findViewById(R.id.listView);
 
         SharedPreferences sharedPreferences_quick_1 = getSharedPreferences("QuickData", Context.MODE_PRIVATE);
-        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , false);
+        Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state" , true);
 
         enable_update_switch = (Switch) findViewById(R.id.enable_update_switch);
         enable_update_switch.setChecked(get_notification_state);

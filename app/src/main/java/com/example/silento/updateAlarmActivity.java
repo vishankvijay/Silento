@@ -317,8 +317,13 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
 
                                 dataBaseManipulator.alarmupdate(repeat_update, id);
                                 dataBaseManipulator.close();
-                                finish();
 
+                                Intent serviceIntent = new Intent(updateAlarmActivity.this, MyAlarm.class);
+                                serviceIntent.setAction("setAlarm");
+
+                                startService(serviceIntent);
+                                //finish();
+                                onBackPressed();
 
 
                             }
