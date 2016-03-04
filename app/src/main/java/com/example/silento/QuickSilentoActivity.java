@@ -326,7 +326,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                             SharedPreferences sharedPreferences = getSharedPreferences("holdFirstActivityAnimation", MODE_PRIVATE);
                             SharedPreferences.Editor editor1 = sharedPreferences.edit();
                             editor1.putBoolean("holdFirstActivityAnimation", true);
-                            editor1.commit();
+                            editor1.apply();
                             onBackPressed();
                             finish();
 
