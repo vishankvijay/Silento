@@ -492,7 +492,7 @@ public class MyAlarm extends Service {
         if (next_toNext_AlarmTime_start != 0) {
             Calendar checkCalendar_next = Calendar.getInstance();
             checkCalendar_next.setTimeInMillis(next_toNext_AlarmTime_start);
-            Toast.makeText(MyAlarm.this, "Next to Next" + checkCalendar_next.get(Calendar.HOUR) + " : " + checkCalendar_next.get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(MyAlarm.this, "Next to Next" + checkCalendar_next.get(Calendar.HOUR) + " : " + checkCalendar_next.get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
 
 
         }

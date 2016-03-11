@@ -2,15 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4B8A4"
+    android:background="#B0BEC5"
     tools:context="com.example.silento.FirstFragment">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="20dp"
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:text="Do you often go through the embarrassment of having your phone ringing at the wrong times?"/>
+
     <!-- TODO: Update blank fragment layout -->
-<ImageView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:src="@mipmap/ic_launcher"
-    android:layout_gravity="center"
-    android:tint="#fff"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro_firsta"
+        android:layout_gravity="center" />
 
 </FrameLayout>

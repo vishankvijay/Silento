@@ -166,7 +166,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
             @Override
             public void onClick(View v) {
                 viewHolder.swipeLayout.close(true);
-                Toast.makeText(context, "Delete " + position  , Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, "Delete " + position  , Toast.LENGTH_SHORT).show();
 
 
                 String alarmTitle_delete = arrayList.get(position).getProfileName();

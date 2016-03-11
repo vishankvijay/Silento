@@ -5,10 +5,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class AppIntroActivity extends AppIntro2 {
+public class AppIntroActivity extends AppIntro {
 
     @Override
     public void init(Bundle savedInstanceState)
@@ -57,6 +58,14 @@ public class AppIntroActivity extends AppIntro2 {
         //setFlowAnimation(); // OR
         //setSlideOverAnimation(); // OR
         //setDepthAnimation();
+
+    }
+
+    @Override
+    public void onSkipPressed() {
+        startActivity(new Intent(AppIntroActivity.this, FirstActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, 0);
+        finish();
 
     }
 

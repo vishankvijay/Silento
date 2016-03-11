@@ -13,5 +13,6 @@
     <color name="gray_divider">#ffb8bdc7</color>
 
     <color name="orange_second">#dcee6d66</color>
+    <color name="list_background">#E0E0E0</color>
 
 </resources>

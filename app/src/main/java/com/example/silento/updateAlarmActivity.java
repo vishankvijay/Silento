@@ -427,7 +427,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Toast.makeText(updateAlarmActivity.this, "on Back called", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(updateAlarmActivity.this, "on Back called", Toast.LENGTH_SHORT).show();
         finish();
         overridePendingTransition(R.anim.slide_in_right, 0);
     }

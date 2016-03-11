@@ -37,7 +37,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E0E0E0"
+        android:background="@color/primaryColor"
+        android:id="@+id/layout_with_color"
         android:layout_below="@+id/toolbar">
 
         <android.support.v7.widget.RecyclerView
@@ -58,10 +59,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:padding="16dp"
-            android:text="It's Empty in here,\n Click on  +  to add new Event.."
+            android:text="Your event list is empty for now,\n Click on  +  to add new Event.."
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000"
-            android:visibility="gone"/>
+            android:textColor="#fff"
+            android:visibility="visible"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/alarm_list_fab_button"
             android:layout_width="wrap_content"
@@ -69,11 +70,11 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="12dp"
             android:layout_marginRight="30dp"
             android:src="@mipmap/ic_action_new"
             android:visibility="invisible"
-            app:backgroundTint="#355C7D"
+            app:backgroundTint="@color/mdtp_accent_color"
             app:borderWidth="0dp"
             app:fabSize="normal"
             app:rippleColor="#355C7D" />
