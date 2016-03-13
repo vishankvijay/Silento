@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.silento">
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -16,9 +17,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logo"
+        android:icon="@mipmap/ic_silento_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <uses-permission android:name="android.permission.WRITE_SETTINGS" />
         <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
         <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />

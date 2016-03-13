@@ -4,7 +4,7 @@
     tools:context="com.example.silento.feedBackActivity">
     <item
         android:id="@+id/action_send"
-        android:orderInCategory="100"
-        android:title="send"
+        android:orderInCategory="200"
+        android:icon="@mipmap/send"
         app:showAsAction="always" />
 </menu>

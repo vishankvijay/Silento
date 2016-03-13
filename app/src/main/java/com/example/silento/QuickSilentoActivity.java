@@ -40,6 +40,11 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.view.MaterialIntroView;
+
 public class QuickSilentoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     Toolbar toolbar;
     Button setTimeButton;
@@ -63,6 +68,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_silento);
         instantiate();
+        showTutorial();
 
 
         radioGroupQuick = (RadioGroup)findViewById(R.id.quick_silento_start_profileRadioGroup);
@@ -108,6 +114,39 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
             }
         });
+
+    }
+
+    private void showTutorial() {
+        new MaterialIntroView.Builder(this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.MINIMUM)
+                .setDelayMillis(500)
+                .enableFadeAnimation(true)
+                .performClick(false)
+                .setInfoText("Hi There! Click this card and see what happens.")
+                .setTarget(setTimeButton)
+                .setListener(new MaterialIntroListener() {
+                    @Override
+                    public void onUserClicked(String s) {
+
+                        Toast.makeText(QuickSilentoActivity.this, "Working", Toast.LENGTH_SHORT).show();
+                        new MaterialIntroView.Builder(QuickSilentoActivity.this)
+                                .enableDotAnimation(true)
+                                .setFocusGravity(FocusGravity.CENTER)
+                                .setFocusType(Focus.MINIMUM)
+                                .setDelayMillis(500)
+                                .enableFadeAnimation(true)
+                                .performClick(true)
+                                .setInfoText("Hi There! Click this card and see what happens.")
+                                .setTarget(setTimeButton)
+                                .setUsageId("2") //THIS SHOULD BE UNIQUE ID
+                                .show();
+                    }
+                })
+                .setUsageId("intro_card") //THIS SHOULD BE UNIQUE ID
+                .show();
 
     }
 
@@ -365,7 +404,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
             builder.setAutoCancel(true);
             builder.setContentTitle("Silento! - Quick Change");
             builder.setContentText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
-            builder.setSmallIcon(R.mipmap.ic_logo);
+            builder.setSmallIcon(R.mipmap.ic_silento_logo);
             builder.setStyle(bigText);
 
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(QuickSilentoActivity.this);

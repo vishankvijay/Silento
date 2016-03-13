@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -20,13 +21,23 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-
+/*
+import com.braunster.tutorialview.object.TutorialBuilder;
+import com.braunster.tutorialview.object.TutorialIntentBuilder;*/
 import com.rey.material.widget.Switch;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.view.MaterialIntroView;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 
 public class updateAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
@@ -65,6 +76,12 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
 
     int id;
 
+    String SHOWCASE_ID = "2";
+
+    TextView daysEnabledTextview;
+    TextView start_profileTypeTextview;
+    TextView end_profileTypeTextview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +89,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
         setContentView(R.layout.activity_update_alarm);
 
         instatntiate();
+        showTutorial();
 
 
         startTimeUpdateButton.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +144,55 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
         });
     }
 
+/*    private void showTutorial()
+    {
+
+        new MaterialIntroView.Builder(this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.ALL)
+                .setDelayMillis(500)
+                .enableFadeAnimation(true)
+                .performClick(true)
+                .setInfoText("Hi There! Click this card and see what happens.")
+                .setTarget(enable_update_switch)
+                .setUsageId("intro_Update") //THIS SHOULD BE UNIQUE ID
+                .show();
+
+
+     *//*   TutorialIntentBuilder builder = new TutorialIntentBuilder(updateAlarmActivity.this);
+
+        TutorialBuilder tBuilder = new TutorialBuilder();
+
+        tBuilder.setTitle("The Title")
+                .setViewToSurround(profileNameUpdateEditText)
+                .setInfoText("This is the explanation about the view.")
+                .setBackgroundColor(R.color.mdtp_accent_color)
+                .setTutorialTextColor(Color.WHITE)
+                .setTutorialTextTypeFaceName("fonts/test_name.ttf")
+                .setTutorialTextSize(25)
+                .setAnimationDuration(500);
+
+        builder.setTutorial(tBuilder.build());
+
+        startActivity(builder.getIntent());
+
+// Override the default animation of the entering activity.
+// This will allow the nice wrapping of the view by the tutorial activity.
+        overridePendingTransition(R.anim.dummy, R.anim.dummy);*//*
+    }*/
+
+
+    private void showTutorial()
+    {
+        new MaterialShowcaseView.Builder(this)
+                .setTarget(enable_update_switch)
+                .setDismissText("GOT IT")
+                .setContentText("This is some amazing feature you should know about")
+                .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
+                .singleUse("update_1") // provide a unique ID used to ensure it is only shown once
+                .show();
+    }
     public void instatntiate() {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -158,6 +225,9 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
 
         activity_update_alarm_layout = (RelativeLayout) findViewById(R.id.activity_update_alarm_layout);
 
+        daysEnabledTextview = (TextView) findViewById(R.id.daysEnabledTextview);
+        end_profileTypeTextview = (TextView) findViewById(R.id.end_profileTypeTextview);
+        start_profileTypeTextview = (TextView) findViewById(R.id.start_profileTypeTextview);
 
 
         getValuesFromDatabase(intent);

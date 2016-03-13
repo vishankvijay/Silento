@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -32,6 +33,15 @@ import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.view.MaterialIntroView;
+import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 
 public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, CompoundButton.OnCheckedChangeListener {
@@ -67,6 +77,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
 
     TextView daysEnabledTextview;
+    TextView start_profileTypeTextview;
+    TextView end_profileTypeTextview;
 
     DataBaseManipulator dataBaseManipulator;
 
@@ -79,6 +91,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     int count_layout_containing_chechkbox_end = 0;
     int count_layout_containing_profile_types = 0;
 
+    String SHOWCASE_ID = "1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +100,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
         setContentView(R.layout.activity_alarm_details);
 
         instantiate();
+        showTutorial();
 
-        daysEnabledTextview = (TextView) findViewById(R.id.daysEnabledTextview);
 
        /* profileNameEditText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,16 +132,15 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
             }
 
             @Override
-            public void afterTextChanged(Editable s)
-            {
-                if(!s.toString().equals("") && count_layout_containing_buttons == 0)
-                {
-                    TranslateAnimation animate = new TranslateAnimation(0, 0, 3*carview_with_buttons.getHeight(), 0);
+            public void afterTextChanged(Editable s) {
+                if (!s.toString().equals("") && count_layout_containing_buttons == 0) {
+                    TranslateAnimation animate = new TranslateAnimation(0, 0, 3 * carview_with_buttons.getHeight(), 0);
                     animate.setDuration(400);
                     animate.setFillAfter(true);
                     carview_with_buttons.startAnimation(animate);
                     carview_with_buttons.setVisibility(View.VISIBLE);
-                    count_layout_containing_buttons++;                }
+                    count_layout_containing_buttons++;
+                }
 
             }
         });
@@ -221,6 +234,242 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
     }
 
+    /*private void showTutorial()
+    {
+        carview_with_buttons.setVisibility(View.VISIBLE);
+        carview_with_profile_types.setVisibility(View.VISIBLE);
+        Toast.makeText(AlarmDetails.this, ""+ SHOWCASE_ID, Toast.LENGTH_SHORT).show();
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, SHOWCASE_ID);
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(profileNameEditText,
+                "This is button one", "GOT IT");
+
+        sequence.addSequenceItem(startTimeButton,
+                "This is button two", "GOT IT");
+
+        sequence.addSequenceItem(endTimeButton,
+                "This is button three", "GOT IT");
+        sequence.setOnItemDismissedListener(new MaterialShowcaseSequence.OnSequenceItemDismissedListener() {
+            @Override
+            public void onDismiss(MaterialShowcaseView materialShowcaseView, int i) {
+                carview_with_buttons.setVisibility(View.INVISIBLE);
+                carview_with_profile_types.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        sequence.start();
+
+    }*/
+
+
+    private void showTutorial()
+    {
+       /* new MaterialIntroView.Builder(this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.ALL)
+                .setDelayMillis(200)
+                .enableFadeAnimation(true)
+                .performClick(false)
+                .setInfoText("Hi There! Click this card and see what happens.")
+                .setTarget(startTimeButton)
+                .setListener(new MaterialIntroListener() {
+                    @Override
+                    public void onUserClicked(String s) {
+
+
+                        new MaterialIntroView.Builder(AlarmDetails.this)
+                                .enableDotAnimation(true)
+                                .setFocusGravity(FocusGravity.CENTER)
+                                .setFocusType(Focus.ALL)
+                                .setDelayMillis(200)
+                                .enableFadeAnimation(true)
+                                .performClick(false)
+                                .setInfoText("Hi There! Click this card and see what happens.")
+                                .setTarget(endTimeButton)
+                                .setListener(new MaterialIntroListener() {
+                                    @Override
+                                    public void onUserClicked(String s) {
+                                        new MaterialIntroView.Builder(AlarmDetails.this)
+                                                .enableDotAnimation(true)
+                                                .setFocusGravity(FocusGravity.CENTER)
+                                                .setFocusType(Focus.ALL)
+                                                .setDelayMillis(200)
+                                                .enableFadeAnimation(true)
+                                                .performClick(false)
+                                                .setInfoText("Hi There! Click this card and see what happens.")
+                                                .setTarget(daysEnabledTextview)
+                                                .setListener(new MaterialIntroListener() {
+                                                    @Override
+                                                    public void onUserClicked(String s) {
+                                                        new MaterialIntroView.Builder(AlarmDetails.this)
+                                                                .enableDotAnimation(true)
+                                                                .setFocusGravity(FocusGravity.CENTER)
+                                                                .setFocusType(Focus.ALL)
+                                                                .setDelayMillis(200)
+                                                                .enableFadeAnimation(true)
+                                                                .performClick(false)
+                                                                .setInfoText("Hi There! Click this card and see what happens.")
+                                                                .setTarget(start_profileTypeTextview)
+                                                                .setListener(new MaterialIntroListener() {
+                                                                    @Override
+                                                                    public void onUserClicked(String s) {
+                                                                        new MaterialIntroView.Builder(AlarmDetails.this)
+                                                                                .enableDotAnimation(true)
+                                                                                .setFocusGravity(FocusGravity.CENTER)
+                                                                                .setFocusType(Focus.ALL)
+                                                                                .setDelayMillis(200)
+                                                                                .enableFadeAnimation(true)
+                                                                                .performClick(false)
+                                                                                .setInfoText("Hi There! Click this card and see what happens.")
+                                                                                .setTarget(end_profileTypeTextview)
+                                                                                .setUsageId("5") //THIS SHOULD BE UNIQUE ID
+                                                                                .show();
+                                                                    }
+                                                                })
+                                                                .setUsageId("4") //THIS SHOULD BE UNIQUE ID
+                                                                .show();
+                                                    }
+                                                })
+                                                .setUsageId("3") //THIS SHOULD BE UNIQUE ID
+                                                .show();
+                                    }
+                                })
+                                .setUsageId("2") //THIS SHOULD BE UNIQUE ID
+                                .show();
+                    }
+                })
+                .setUsageId("1") //THIS SHOULD BE UNIQUE ID
+                .show();
+*/
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
+
+        Boolean show = sharedPreferences.getBoolean("show_alarm_tutorial", true);
+
+
+        if(show) {
+
+            carview_with_buttons.setVisibility(View.VISIBLE);
+            carview_with_profile_types.setVisibility(View.VISIBLE);
+
+            new MaterialShowcaseView.Builder(this)
+                    .setTarget(startTimeButton)
+                    .setDismissText("GOT IT")
+                    .setContentText("This is some amazing feature you should know about")
+                    .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
+                    .singleUse("1")// provide a unique ID used to ensure it is only shown once
+                    .setListener(new IShowcaseListener() {
+                        @Override
+                        public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                        }
+
+                        @Override
+                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
+
+                            new MaterialShowcaseView.Builder(AlarmDetails.this)
+                                    .setTarget(endTimeButton)
+                                    .setDismissText("GOT IT")
+                                    .setContentText("This is some amazing feature you should know about")
+                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                    .singleUse("2") // provide a unique ID used to ensure it is only shown once
+                                    .setListener(new IShowcaseListener() {
+                                        @Override
+                                        public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                                        }
+
+                                        @Override
+                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
+
+
+                                            new MaterialShowcaseView.Builder(AlarmDetails.this)
+                                                    .setTarget(daysEnabledTextview)
+                                                    .setDismissText("GOT IT")
+                                                    .setContentText("This is some amazing feature you should know about")
+                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                    .singleUse("3") // provide a unique ID used to ensure it is only shown once
+                                                    .setListener(new IShowcaseListener() {
+                                                        @Override
+                                                        public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
+                                                        {
+                                                            new MaterialShowcaseView.Builder(AlarmDetails.this)
+                                                                    .setTarget(start_profileTypeTextview)
+                                                                    .setDismissText("GOT IT")
+                                                                    .setContentText("This is some amazing feature you should know about")
+                                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                                    .singleUse("4") // provide a unique ID used to ensure it is only shown once
+                                                                    .setListener(new IShowcaseListener() {
+                                                                        @Override
+                                                                        public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
+                                                                        {
+                                                                            new MaterialShowcaseView.Builder(AlarmDetails.this)
+                                                                                    .setTarget(end_profileTypeTextview)
+                                                                                    .setDismissText("GOT IT")
+                                                                                    .setContentText("This is some amazing feature you should know about")
+                                                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                                                    .singleUse("5") // provide a unique ID used to ensure it is only shown once
+                                                                                    .setListener(new IShowcaseListener() {
+                                                                                        @Override
+                                                                                        public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+                                                                                        }
+
+                                                                                        @Override
+                                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
+                                                                                        {
+                                                                                            make_view_invisible();
+                                                                                        }
+                                                                                    })
+                                                                                    .show();
+                                                                        }
+                                                                    })
+                                                                    .show();
+                                                        }
+                                                    })
+                                                    .show();
+
+                                        }
+                                    })
+                                    .show();
+
+                        }
+                    })
+                    .show();
+        }
+
+    }
+
+    private void make_view_invisible()
+    {
+
+        carview_with_buttons.setVisibility(View.INVISIBLE);
+        carview_with_profile_types.setVisibility(View.INVISIBLE);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData" , MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("show_alarm_tutorial", false);
+        editor.apply();
+
+    }
+
     public void instantiate() {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -260,6 +509,11 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
         carview_with_profile_types  = (CardView) findViewById(R.id.carview_with_profile_types);
 
         activity_alarm_details_layout = (RelativeLayout) findViewById(R.id.activity_alarm_details_layout);
+
+        daysEnabledTextview = (TextView) findViewById(R.id.daysEnabledTextview);
+        start_profileTypeTextview = (TextView) findViewById(R.id.start_profileTypeTextview);
+        end_profileTypeTextview = (TextView) findViewById(R.id.end_profileTypeTextview);
+
     }
 
 

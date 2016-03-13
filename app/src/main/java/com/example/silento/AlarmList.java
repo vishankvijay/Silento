@@ -349,7 +349,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
                 final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                 dialog.setView(view);
                 dialog.setTitle("Shake Silento!!");
-                dialog.setIcon(R.mipmap.ic_logo);
+                dialog.setIcon(R.mipmap.ic_silento_logo);
 
                 dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
 
@@ -522,7 +522,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
                         builder.setAutoCancel(true);
                         builder.setContentTitle("Silento! - Quick Change");
                         builder.setContentText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
-                        builder.setSmallIcon(R.mipmap.ic_logo);
+                        builder.setSmallIcon(R.mipmap.ic_silento_logo);
                         builder.setStyle(bigText);
 
                         TaskStackBuilder stackBuilder = TaskStackBuilder.create(AlarmList.this);
@@ -568,7 +568,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
                 final AlertDialog.Builder deleteAllDialog = new AlertDialog.Builder(this);
                 deleteAllDialog.setTitle("Wait");
                 deleteAllDialog.setMessage("All Profiles will be Deleted");
-                deleteAllDialog.setIcon(R.mipmap.ic_logo);
+                deleteAllDialog.setIcon(R.mipmap.ic_silento_logo);
                 deleteAllDialog.setPositiveButton("continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

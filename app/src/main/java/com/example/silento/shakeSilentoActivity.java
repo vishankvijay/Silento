@@ -128,7 +128,7 @@ public class shakeSilentoActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("enableValue", false);
                     editor.putInt("seekBarValue", sensivity_slider.getValue());
-                    editor.commit();
+                    editor.apply();
 
                     Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
                     shakeServiceIntent2.setAction("register");

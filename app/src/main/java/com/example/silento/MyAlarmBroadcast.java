@@ -408,7 +408,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver{
             builder.setAutoCancel(true);
             builder.setContentTitle("Silento!");
             builder.setContentText("Silento! has successfully changed your profile.\nclick here to manage your profiles.");
-            builder.setSmallIcon(R.mipmap.ic_logo);
+            builder.setSmallIcon(R.mipmap.ic_silento_logo);
             builder.setStyle(bigText);
 
 
