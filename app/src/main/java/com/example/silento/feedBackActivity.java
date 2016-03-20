@@ -37,6 +37,7 @@ public class feedBackActivity extends AppCompatActivity {
 
         textTitle = (TextInputLayout) findViewById(R.id.textTitle);
         textMessage = (TextInputLayout) findViewById(R.id.textMsg);
+        
     }
 
     @Override

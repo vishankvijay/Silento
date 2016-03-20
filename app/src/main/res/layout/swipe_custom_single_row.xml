@@ -27,7 +27,7 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <TextView
+            <ImageView
                 android:id="@+id/edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,12 +36,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Edit"
-                android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:src="@mipmap/edit" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,10 +48,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Delete"
-                android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:src="@mipmap/delete"/>
         </LinearLayout>
 
 

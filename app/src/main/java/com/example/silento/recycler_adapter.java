@@ -422,8 +422,8 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
         TextView profileTextView;
         TextView from_till_TextView;
-        TextView edit;
-        TextView delete;
+        ImageView edit;
+        ImageView delete;
         TextView repeatDaysTextView;
         ImageView enableImageView;
         ImageView start_profileTypeImageView;
@@ -448,8 +448,8 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
             end_profileTypeImageView = (ImageView) itemView.findViewById(R.id.end_profile_type_image_view);
 
 
-            edit = (TextView) itemView.findViewById(R.id.edit);
-            delete = (TextView) itemView.findViewById(R.id.delete);
+            edit = (ImageView) itemView.findViewById(R.id.edit);
+            delete = (ImageView) itemView.findViewById(R.id.delete);
 
             cardRoot = (CardView) itemView.findViewById(R.id.card_root);
         }
