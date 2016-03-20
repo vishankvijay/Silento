@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/first"
                 android:tint="#fff"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="85dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/second"
                 android:tint="#fff"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="85dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,14 +88,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="85dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/third"
                 android:tint="#fff"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="0dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,14 +125,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="85dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/fourth"
                 android:tint="#fff"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="0dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -158,14 +160,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="85dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/fifthb"
                 android:tint="#fff"
-                android:layout_marginLeft="100dp"/>
+                android:layout_marginLeft="0dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

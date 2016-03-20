@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +73,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     CardView carview_with_buttons;
     CardView carview_with_profile_types;
 
-    RelativeLayout activity_alarm_details_layout;
+    ScrollView activity_alarm_details_layout;
 
 
 
@@ -508,7 +509,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
         carview_with_buttons  = (CardView) findViewById(R.id.carview_with_buttons);
         carview_with_profile_types  = (CardView) findViewById(R.id.carview_with_profile_types);
 
-        activity_alarm_details_layout = (RelativeLayout) findViewById(R.id.activity_alarm_details_layout);
+        activity_alarm_details_layout = (ScrollView) findViewById(R.id.activity_alarm_details_layout);
 
         daysEnabledTextview = (TextView) findViewById(R.id.daysEnabledTextview);
         start_profileTypeTextview = (TextView) findViewById(R.id.start_profileTypeTextview);
