@@ -50,7 +50,7 @@ import java.util.Calendar;
 
 
 
-public class AlarmList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AlarmList extends AppCompatActivity {
 
     private Toolbar toolbar;
     private FloatingActionButton addAlarmFab;
@@ -90,15 +90,15 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_list);
 
-        metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        /*metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);*/
 
         instantiate();
 
-        drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+       /* drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        mDrawer.setNavigationItemSelectedListener(this);
+        drawerToggle.syncState();*/
+        //mDrawer.setNavigationItemSelectedListener(this);
 
 
         emptyTextView = (TextView) findViewById(R.id.emptyTextView);
@@ -246,7 +246,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
     public void instantiate() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Silento!");
+        getSupportActionBar().setTitle("Events");
 
         //alarmListview = (ListView) findViewById(R.id.alarm_list);
 
@@ -257,8 +257,8 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
 
         addAlarmFab = (FloatingActionButton) findViewById(R.id.alarm_list_fab_button);
 
-        mDrawer = (NavigationView) findViewById(R.id.main_drawer);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //mDrawer = (NavigationView) findViewById(R.id.main_drawer);
+      //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
        // profilesLists_ArrayList = dataBaseManipulator.fetchalarms();
@@ -284,7 +284,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-    @Override
+  /*  @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
@@ -623,7 +623,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
         }
 
         return false;
-    }
+    }*/
 
     /*@Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -708,7 +708,7 @@ public class AlarmList extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
+       // drawerToggle.onConfigurationChanged(newConfig);
 
     }
 

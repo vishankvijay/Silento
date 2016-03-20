@@ -1,95 +1,81 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlarmList">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primaryColor">
 
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#355C7D"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <View
+        android:id="@+id/divider_alarmlist"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/shadow" />
+
+    <!--    <ListView
+            android:scrollbars="none"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/alarm_list"
+            android:layout_margin="5dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/toolbar"
+            android:layoutAnimation="@anim/listview_animation"/>-->
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#E0E0E0">
-
-        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#355C7D"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-        <!--    <ListView
-                android:scrollbars="none"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/alarm_list"
-                android:layout_margin="5dp"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/toolbar"
-                android:layoutAnimation="@anim/listview_animation"/>-->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/primaryColor"
         android:id="@+id/layout_with_color"
-        android:layout_below="@+id/toolbar">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/divider_alarmlist">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/alarm_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layoutAnimation="@anim/listview_animation"
             android:layout_margin="5dp"
-             />
+            android:layoutAnimation="@anim/listview_animation" />
 
-        </RelativeLayout>
-
-
-        <TextView
-            android:id="@+id/emptyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:padding="16dp"
-            android:text="Your event list is empty for now,\n Click on  +  to add new Event.."
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#fff"
-            android:visibility="visible"/>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/alarm_list_fab_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="12dp"
-            android:layout_marginRight="30dp"
-            android:src="@mipmap/ic_action_new"
-            android:visibility="invisible"
-            app:backgroundTint="@color/mdtp_accent_color"
-            app:borderWidth="0dp"
-            app:fabSize="normal"
-            app:rippleColor="#355C7D" />
     </RelativeLayout>
 
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/main_drawer"
+    <TextView
+        android:id="@+id/emptyTextView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/drawer_header"
-        app:itemIconTint="@color/nav_icons_tint"
-        app:itemTextColor="#000"
-        app:menu="@menu/menu_drawer" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="16dp"
+        android:text="Your event list is empty for now,\n Click on  +  to add new Event.."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#fff"
+        android:visibility="visible" />
 
-</android.support.v4.widget.DrawerLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/alarm_list_fab_button"
+        app:backgroundTint="@color/mdtp_accent_color"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:rippleColor="#355C7D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="30dp"
+        android:src="@mipmap/ic_action_new"
+        android:visibility="invisible" />
+</RelativeLayout>
+

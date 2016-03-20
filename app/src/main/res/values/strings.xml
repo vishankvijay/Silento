@@ -1,19 +1,14 @@
 <resources>
     <string name="app_name">Silento!</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="title_activity_alarm_details">AlarmDetails</string>
     <string name="title_activity_update_alarm">updateAlarmActivity</string>
-    <string name="title_activity_shake">Shake</string>
     <string name="title_activity_feed_back">feedBackActivity</string>
     <string name="title_activity_about">aboutActivity</string>
     <string name="title_activity_upcoming_features">upcomingFeaturesActivity</string>
     <string name="title_activity_exception_activiy">ExceptionActiviy</string>
-    <string name="title_activity_main_activity1">MainActivity1</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
