@@ -247,6 +247,7 @@ public class AlarmList extends AppCompatActivity {
         //dataBaseManipulator.close();
     }*/
 
+
     public void instantiate() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

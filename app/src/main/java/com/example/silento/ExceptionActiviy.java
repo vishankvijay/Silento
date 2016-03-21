@@ -43,6 +43,8 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
     Toolbar toolbar;
 
+    com.melnykov.fab.FloatingActionButton fab ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -62,8 +64,9 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
 
         initializeListView();
-        addExceptionfab = (FloatingActionButton) findViewById(R.id.add_exception_fab_button);
-        addExceptionfab.setOnClickListener(new View.OnClickListener() {
+        fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToListView(exceptionListView);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -85,12 +88,12 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
         {
 
         //TranslateAnimation animate = new TranslateAnimation(0,0, 2 *addExceptionfab.getWidth(),0);
-         TranslateAnimation animate = new TranslateAnimation(0,0, 2 *addExceptionfab.getWidth() ,0);
+         TranslateAnimation animate = new TranslateAnimation(0,0, 2 *fab.getWidth() ,0);
         animate.setDuration(800);
         animate.setFillAfter(true);
 
-            addExceptionfab.startAnimation(animate);
-            addExceptionfab.setVisibility(View.VISIBLE);
+            fab.startAnimation(animate);
+            fab.setVisibility(View.VISIBLE);
             ++count_animation;
         }
     }
