@@ -40,8 +40,9 @@
             android:layout_height="wrap_content"
             android:text="Looks like you are busy. Tell us the duration and we will quickly manage your profile !"
             android:textColor="#000"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:textSize="16sp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/textView_tell" />
 
@@ -51,8 +52,8 @@
             android:id="@+id/quick_silento_button"
             android:layout_below="@id/textView_tell"
             android:layout_marginTop="35dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
             android:text="Set Duration"
             android:textColor="#fff"
             android:background="@drawable/my_custom_button"
@@ -69,11 +70,11 @@
             android:visibility="invisible">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="what profile do you want for the next "
                 android:id="@+id/textview_what_profile"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:textColor="#000"/>
 
             <RadioGroup
