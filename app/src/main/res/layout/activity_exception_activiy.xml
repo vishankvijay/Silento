@@ -26,7 +26,7 @@
         android:src="@mipmap/ic_action_user_add"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        app:borderWidth="0dp"
+        app:borderWidth="0dp "
         app:fabSize="normal"
         app:rippleColor="#355C7D"
         app:backgroundTint="#355C7D"
