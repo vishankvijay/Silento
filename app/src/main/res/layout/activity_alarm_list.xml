@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:background="@color/primaryColor">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,7 +35,7 @@
             android:layout_below="@+id/toolbar"
             android:layoutAnimation="@anim/listview_animation"/>-->
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/layout_with_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,7 +48,18 @@
             android:layout_margin="5dp"
             android:layoutAnimation="@anim/listview_animation" />
 
-    </RelativeLayout>
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@mipmap/ic_action_new"
+            fab:fab_colorNormal="@color/mdtp_accent_color"
+            fab:fab_colorPressed="@color/primaryColor"
+            fab:fab_colorRipple="@color/primaryColor" />
+
+    </FrameLayout>
 
 
     <TextView
@@ -62,7 +74,7 @@
         android:textColor="#fff"
         android:visibility="visible" />
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/alarm_list_fab_button"
         app:backgroundTint="@color/mdtp_accent_color"
         app:borderWidth="0dp"
@@ -76,6 +88,9 @@
         android:layout_marginBottom="12dp"
         android:layout_marginRight="30dp"
         android:src="@mipmap/ic_action_new"
-        android:visibility="invisible" />
+        android:visibility="invisible" />-->
+
+
+
 </RelativeLayout>
 

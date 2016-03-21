@@ -84,6 +84,7 @@ public class AlarmList extends AppCompatActivity {
 
     recycler_adapter recycler_adapter;
 
+    com.melnykov.fab.FloatingActionButton fab ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +108,10 @@ public class AlarmList extends AppCompatActivity {
 //        alarmListview.setOnItemClickListener(AlarmList.this);
 //        alarmListview.setOnItemLongClickListener(AlarmList.this);
 
-        addAlarmFab.setOnClickListener(new View.OnClickListener() {
+        fab.attachToRecyclerView(alarmRecyclerView);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AlarmList.this, AlarmDetails.class);
@@ -126,11 +130,11 @@ public class AlarmList extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus && animation_count == 0) {
-            TranslateAnimation translateAnimation = new TranslateAnimation(2 * addAlarmFab.getWidth(), 0, 0, 0);
+            TranslateAnimation translateAnimation = new TranslateAnimation(2 * fab.getWidth(), 0, 0, 0);
             translateAnimation.setDuration(700);
             translateAnimation.setFillAfter(true);
-            addAlarmFab.startAnimation(translateAnimation);
-            addAlarmFab.setVisibility(View.VISIBLE);
+            fab.startAnimation(translateAnimation);
+            fab.setVisibility(View.VISIBLE);
             ++animation_count;
         }
 
@@ -255,7 +259,7 @@ public class AlarmList extends AppCompatActivity {
         alarmRecyclerView.setHasFixedSize(true);
        // alarmRecyclerView.setAdapter(new recycler_adapter(this));
 
-        addAlarmFab = (FloatingActionButton) findViewById(R.id.alarm_list_fab_button);
+        fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
 
         //mDrawer = (NavigationView) findViewById(R.id.main_drawer);
       //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
