@@ -188,7 +188,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
         new MaterialShowcaseView.Builder(this)
                 .setTarget(enable_update_switch)
                 .setDismissText("GOT IT")
-                .setContentText("This is some amazing feature you should know about")
+                .setContentText("Use this to ENABLE or Disable your Event.")
                 .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
                 .singleUse("update_1") // provide a unique ID used to ensure it is only shown once
                 .show();

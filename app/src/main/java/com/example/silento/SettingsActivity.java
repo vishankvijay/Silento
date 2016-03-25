@@ -73,7 +73,9 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         switch (position)
         {
             case 0:
-                Toast.makeText(SettingsActivity.this, "Working", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(SettingsActivity.this, "Working", Toast.LENGTH_SHORT).show();
+
+                startActivity( new Intent( SettingsActivity.this , HelpActivity.class));
                 break;
 
             case 1:

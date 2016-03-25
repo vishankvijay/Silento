@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_shake_silento_layout"
@@ -8,196 +7,207 @@
     android:layout_height="match_parent"
     tools:context="com.example.silento.shakeSilentoActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#355C7D"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:background="#fff"
-        android:orientation="vertical"
         >
-
-
-        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#355C7D"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-        <!--<TextView
-            android:id="@+id/shake_silento_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textStyle="italic"
-            android:layout_below="@id/toolbar"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000"
-            android:visibility="gone"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:text="Don't want to get into the hustle of creating profiles.\nShake Silento is the the solution !"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
 
+            <!--<TextView
+                android:id="@+id/shake_silento_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textStyle="italic"
+                android:layout_below="@id/toolbar"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:text="Don't want to get into the hustle of creating profiles.\nShake Silento is the the solution !"/>-->
+
             <LinearLayout
-                android:id="@+id/switch_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:orientation="horizontal"
-                android:paddingRight="16dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Enable Shake Silento?"
-                    android:textColor="#000"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <com.rey.material.widget.Switch
-                    android:id="@+id/shake_silento_switch"
-                    style="@style/Material.Widget.Switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:gravity="center"
-                    app:sw_trackCap="round"
-                    app:sw_trackSize="1dp" />
-
-            </LinearLayout>
-
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/cardview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/switch_layout"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                card_view:cardBackgroundColor="#fff"
-                card_view:cardCornerRadius="2dp"
-                card_view:cardElevation="8dp">
 
                 <LinearLayout
+                    android:id="@+id/switch_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="10dp">
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Enable Shake Silento?"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <com.rey.material.widget.Switch
+                        android:id="@+id/shake_silento_switch"
+                        style="@style/Material.Widget.Switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center"
-                        android:padding="10dp"
-                        android:text="Select shake sensivity of your device"
-                        android:textColor="#000"
-                        android:textStyle="italic|bold" />
-
-
-                    <com.jesusm.holocircleseekbar.lib.HoloCircleSeekBar
-                        android:id="@+id/sensivity_slider"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        app:max="50"
-                        app:pointer_color="#D56E83"
-                        app:pointer_halo_color="#D56E83"
-                        app:pointer_size="15dp"
-                        app:text_color="#D56E83"
-                        app:text_size="65sp"
-                        app:wheel_active_color="#D56E83"
-                        app:wheel_unactive_color="#60d56e83" />
-
-
-                    <!--<com.rey.material.widget.Slider
-                        style="@style/Material.Widget.Slider"
-                        android:padding="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:sl_minValue="2"
-                        app:sl_maxValue="30"
-                        app:sl_value="5"
-                        app:sl_discreteMode="true"
-                        app:sl_primaryColor="#D56E83"
-                        app:sl_thumbRadius="15sp"
-                        app:sl_travelAnimDuration="150"
-                        android:id="@+id/sensivity_slider" />-->
+                        android:checked="true"
+                        android:gravity="center"
+                        app:sw_trackCap="round"
+                        app:sw_trackSize="1dp" />
 
                 </LinearLayout>
 
 
-            </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/cardview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/switch_layout"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardBackgroundColor="#fff"
+                    card_view:cardCornerRadius="2dp"
+                    card_view:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="Select shake sensivity of your device"
+                            android:textColor="#000"
+                            android:textStyle="normal" />
+
+
+                        <com.jesusm.holocircleseekbar.lib.HoloCircleSeekBar
+                            android:id="@+id/sensivity_slider"
+                            android:layout_width="match_parent"
+                            android:layout_height="220dp"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            app:max="50"
+                            app:pointer_color="#D56E83"
+                            app:pointer_halo_color="#D56E83"
+                            app:pointer_size="15dp"
+                            app:text_color="#D56E83"
+                            app:text_size="65sp"
+                            app:wheel_active_color="#D56E83"
+                            app:wheel_unactive_color="#60d56e83"
+
+                            />
+
+
+                        <!--<com.rey.material.widget.Slider
+                            style="@style/Material.Widget.Slider"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:sl_minValue="2"
+                            app:sl_maxValue="30"
+                            app:sl_value="5"
+                            app:sl_discreteMode="true"
+                            app:sl_primaryColor="#D56E83"
+                            app:sl_thumbRadius="15sp"
+                            app:sl_travelAnimDuration="150"
+                            android:id="@+id/sensivity_slider" />-->
+
+                    </LinearLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/what_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="What profile do you want when you shake it ?"
+                    android:textColor="#000"
+                    android:textSize="15dp" />
+
+                <RadioGroup
+                    android:id="@+id/shake_silento_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/what_profile"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/shake_silento_silent_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:padding="5dp"
+                        android:text="Silent" />
+
+                    <RadioButton
+                        android:id="@+id/shake_silento_vibration_radio_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:padding="5dp"
+                        android:text="Vibration" />
+
+                </RadioGroup>
+            </LinearLayout>
+
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cardview"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            android:padding="10dp"
-
-            >
-
-            <TextView
-                android:id="@+id/what_profile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="What profile do you want when you shake it ?"
-                android:textColor="#000"
-                android:textSize="15dp" />
-
-            <RadioGroup
-                android:id="@+id/shake_silento_radio_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/what_profile"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/shake_silento_silent_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:padding="5dp"
-                    android:text="Silent" />
-
-                <RadioButton
-                    android:id="@+id/shake_silento_vibration_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="false"
-                    android:padding="5dp"
-                    android:text="Vibration" />
-
-            </RadioGroup>
-        </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
+

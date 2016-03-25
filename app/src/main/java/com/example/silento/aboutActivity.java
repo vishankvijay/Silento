@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jesusm.holocircleseekbar.lib.HoloCircleSeekBar;
@@ -16,6 +17,7 @@ public class aboutActivity extends AppCompatActivity {
     HoloCircleSeekBar holoCircleSeekBar;
 
     Toolbar toolbar;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,9 @@ public class aboutActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("About The App");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        logo = (ImageView) findViewById(R.id.logo);
+
+        logo.setRotation(90);
         //vfvtvv
 
         //holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.circlepicker);

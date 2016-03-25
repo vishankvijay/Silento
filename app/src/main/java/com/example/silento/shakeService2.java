@@ -220,20 +220,22 @@ public class shakeService2 extends Service implements SensorEventListener {
 
             if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE )
             {
-                am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                am.setRingerMode(0);
+                am.setRingerMode(0);
             }
-            else if(am.getRingerMode() == AudioManager.RINGER_MODE_SILENT)
+            else if(am.getRingerMode() == 0)
             {
                 am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
             }
             else
             {
-                am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                am.setRingerMode(0);
+                am.setRingerMode(0);
             }
         }
         else
         {
-            if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT )
+            if (am.getRingerMode() == 0 )
             {
                 am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
             }

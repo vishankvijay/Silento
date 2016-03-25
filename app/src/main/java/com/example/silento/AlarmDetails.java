@@ -73,7 +73,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     CardView carview_with_buttons;
     CardView carview_with_profile_types;
 
-    ScrollView activity_alarm_details_layout;
+    RelativeLayout activity_alarm_details_layout;
 
 
 
@@ -362,8 +362,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
             new MaterialShowcaseView.Builder(this)
                     .setTarget(startTimeButton)
-                    .setDismissText("GOT IT")
-                    .setContentText("This is some amazing feature you should know about")
+                    .setDismissText("NEXT")
+                    .setContentText("Use this to set the START TIME of your event.")
                     .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
                     .singleUse("1")// provide a unique ID used to ensure it is only shown once
                     .setListener(new IShowcaseListener() {
@@ -378,7 +378,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                     .setTarget(endTimeButton)
                                     .setDismissText("GOT IT")
-                                    .setContentText("This is some amazing feature you should know about")
+                                    .setContentText("Use this to set the END TIME of your event.")
                                     //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                     .singleUse("2") // provide a unique ID used to ensure it is only shown once
                                     .setListener(new IShowcaseListener() {
@@ -393,8 +393,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                     .setTarget(daysEnabledTextview)
-                                                    .setDismissText("GOT IT")
-                                                    .setContentText("This is some amazing feature you should know about")
+                                                    .setDismissText("OK")
+                                                    .setContentText("Use this to set the Enabled Days of your event.")
                                                     //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                     .singleUse("3") // provide a unique ID used to ensure it is only shown once
                                                     .setListener(new IShowcaseListener() {
@@ -409,7 +409,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                                     .setTarget(start_profileTypeTextview)
                                                                     .setDismissText("GOT IT")
-                                                                    .setContentText("This is some amazing feature you should know about")
+                                                                    .setContentText("Use this to set the PROFILE you want on the START of your EVENT")
                                                                     //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                     .singleUse("4") // provide a unique ID used to ensure it is only shown once
                                                                     .setListener(new IShowcaseListener() {
@@ -419,13 +419,12 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                                         }
 
                                                                         @Override
-                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
-                                                                        {
+                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
                                                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                                                     .setTarget(end_profileTypeTextview)
-                                                                                    .setDismissText("GOT IT")
-                                                                                    .setContentText("This is some amazing feature you should know about")
-                                                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                                                    .setDismissText("Cool! Lets Start")
+                                                                                    .setContentText("Use this to set the PROFILE you want on the END of your EVENT")
+                                                                                            //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                                     .singleUse("5") // provide a unique ID used to ensure it is only shown once
                                                                                     .setListener(new IShowcaseListener() {
                                                                                         @Override
@@ -434,8 +433,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                                                         }
 
                                                                                         @Override
-                                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
-                                                                                        {
+                                                                                        public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
                                                                                             make_view_invisible();
                                                                                         }
                                                                                     })
@@ -509,7 +507,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
         carview_with_buttons  = (CardView) findViewById(R.id.carview_with_buttons);
         carview_with_profile_types  = (CardView) findViewById(R.id.carview_with_profile_types);
 
-        activity_alarm_details_layout = (ScrollView) findViewById(R.id.activity_alarm_details_layout);
+        activity_alarm_details_layout = (RelativeLayout) findViewById(R.id.activity_alarm_details_layout);
 
         daysEnabledTextview = (TextView) findViewById(R.id.daysEnabledTextview);
         start_profileTypeTextview = (TextView) findViewById(R.id.start_profileTypeTextview);

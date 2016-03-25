@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.example.silento.HelpActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/action_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/event"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/event_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/accentColor"
+                    android:gravity="center_vertical"
+                    android:text="Events"
+                    android:textColor="@color/accentColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- &lt;!&ndash;content to hide/show &ndash;&gt;-->
+
+
+                <TextView
+                    android:id="@+id/event_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="A small Description"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+
+            <LinearLayout
+                android:id="@+id/quick_silento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/quick_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="Quick Silent"
+                    android:textColor="@color/mdtp_accent_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- &lt;!&ndash;content to hide/show &ndash;&gt;-->
+
+
+                <TextView
+                    android:id="@+id/quick_silento_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="A small Description"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+
+            <LinearLayout
+                android:id="@+id/shake_silento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/shake_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="Shake Silento"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- &lt;!&ndash;content to hide/show &ndash;&gt;-->
+
+
+                <TextView
+                    android:id="@+id/shake_silento_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="A small Description"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+
+            <LinearLayout
+                android:id="@+id/exceptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/exceptions_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/mdtp_accent_color"
+                    android:gravity="center_vertical"
+                    android:text="Exceptions"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- &lt;!&ndash;content to hide/show &ndash;&gt;-->
+
+
+                <TextView
+                    android:id="@+id/exceptions_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="A small Description"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+
+            <LinearLayout
+                android:id="@+id/settings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/settings_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="Settings"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- &lt;!&ndash;content to hide/show &ndash;&gt;-->
+
+
+                <TextView
+                    android:id="@+id/settings_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="A small Description"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+
+            <!-- <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:id="@+id/carview_with_buttons"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:layout_marginTop="5dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent">
+                 <TextView
+                     android:id="@+id/help_title_gest"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:clickable="true"
+                     android:onClick="toggle_contents"
+                     android:text="Events"
+                     android:textSize="40sp" />
+
+                 &lt;!&ndash;content to hide/show &ndash;&gt;
+                 <TextView
+                     android:id="@+id/txt_help_gest"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_below="@id/help_title_gest"
+                     android:text="A small Description"
+                     android:visibility="gone"
+                     android:textSize="15sp" />
+
+                 </RelativeLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+
+                         android:textSize="15sp" />
+
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+
+                         android:textSize="15sp" />
+
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+                         android:textSize="15sp" />
+
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+                         android:textSize="15sp" />
+
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+                         android:textSize="15sp" />
+
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+
+             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:foreground="?android:attr/selectableItemBackground"
+                 android:visibility="visible"
+                 card_view:cardBackgroundColor="#fff"
+                 card_view:cardCornerRadius="4dp"
+                 card_view:cardElevation="3dp">
+                 &lt;!&ndash; activity_info layout file &ndash;&gt;
+                 &lt;!&ndash; Clickable title &ndash;&gt;
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:onClick="toggle_contents"
+                         android:text="Events"
+                         android:textSize="40sp" />
+
+                     &lt;!&ndash;content to hide/show &ndash;&gt;
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="A small Description"
+                         android:visibility="gone"
+                         android:textSize="15sp" />
+                 </LinearLayout>
+
+             </android.support.v7.widget.CardView>
+
+     -->
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -8,7 +8,9 @@ import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ public class MyExceptionReciever extends BroadcastReceiver
     public static final String TAG = "PHONE STATE";
     private static String mLastState;
     DataBaseManipulator dataBaseManipulator;
+    int count = 0;
 
 
 
@@ -56,7 +59,7 @@ public class MyExceptionReciever extends BroadcastReceiver
             if(state.equalsIgnoreCase(TelephonyManager.EXTRA_STATE_RINGING))
             {
 
-                checkCurrentProfile();
+
 
 
                 dataBaseManipulator = new DataBaseManipulator(context);
@@ -72,7 +75,9 @@ public class MyExceptionReciever extends BroadcastReceiver
 
                         if(PhoneNumber.equals(numberInDB))
                         {
+                            checkCurrentProfile();
                             makeitNormal();
+                            ++count;
                             break;
                         }
 
@@ -89,17 +94,23 @@ public class MyExceptionReciever extends BroadcastReceiver
                 if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK))
                 {
 
+                    Toast.makeText(context, "count offkook "+count, Toast.LENGTH_SHORT).show();
 
-                    restorePreviousProfile();
+                   // if(count>0)
+                   // restorePreviousProfile();
+
+                    checkCurrentProfile();
+                    //makeitNormal();
 
                 }
 
 
             if (state.equals(TelephonyManager.EXTRA_STATE_IDLE))
             {
+                Toast.makeText(context, "IDLE"+count, Toast.LENGTH_SHORT).show();
 
-
-                restorePreviousProfile();
+               // if(count>0)
+                    restorePreviousProfile();
             }
 
             mLastState = state;
@@ -117,20 +128,27 @@ public class MyExceptionReciever extends BroadcastReceiver
         SharedPreferences sharedPreferences76 = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
         ringer = sharedPreferences76.getInt("profileType", 3);
 
+        Toast.makeText(context, "restore mode "+ ringer, Toast.LENGTH_SHORT).show();
 
-        if (ringer==AudioManager.RINGER_MODE_SILENT)
+
+        if (ringer==0)
         {
 
-            vishankManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            vishankManager.setRingerMode(0);
+            vishankManager.setRingerMode(0);
 
         }
         else if(ringer==AudioManager.RINGER_MODE_NORMAL){
+
             vishankManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
         }
         else if(ringer==AudioManager.RINGER_MODE_VIBRATE)
         {
             vishankManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
         }
+        else
+            Toast.makeText(context, "YOU Were right", Toast.LENGTH_SHORT).show();
+
 
 
     }
@@ -147,13 +165,47 @@ public class MyExceptionReciever extends BroadcastReceiver
 
     private void checkCurrentProfile()
     {
+
+
         AudioManager maudio=(AudioManager)context.getSystemService(context.AUDIO_SERVICE);
         ringerMode=maudio.getRingerMode();
 
-
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("profileType", ringerMode);
+
+
+        Toast.makeText(context, " mode " + ringerMode, Toast.LENGTH_SHORT).show();
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            try {
+                switch (Settings.Global.getInt(context.getContentResolver(), "zen_mode"))
+                {
+                    case 2: ;
+                    case 1:
+                        editor.putInt("profileType", 0);
+
+                        break;
+
+                    case  0 :
+                        if(ringerMode == 1)
+                        editor.putInt("profileType", 1);
+                        else
+                            editor.putInt("profileType", 2);
+
+                }
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            editor.putInt("profileType", ringerMode);
+        }
+
+
+
         editor.commit();
 
 

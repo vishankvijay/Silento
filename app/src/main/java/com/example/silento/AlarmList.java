@@ -252,6 +252,7 @@ public class AlarmList extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Events");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //alarmListview = (ListView) findViewById(R.id.alarm_list);
 
