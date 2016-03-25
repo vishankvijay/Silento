@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -69,6 +70,18 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
         setContentView(R.layout.activity_quick_silento);
         instantiate();
         showTutorial();
+
+        /*AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
+        Toast.makeText(QuickSilentoActivity.this, "initial " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();*/
+
+
+        try {
+            int i = Settings.Global.getInt(getContentResolver(), "zen_mode");
+
+            Toast.makeText(QuickSilentoActivity.this, "wow " + i, Toast.LENGTH_SHORT).show();
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         radioGroupQuick = (RadioGroup)findViewById(R.id.quick_silento_start_profileRadioGroup);
@@ -325,7 +338,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                             //Toast.makeText(QuickSilentoActivity.this, "inside" + selectedRadioButtonQuick.getText(), Toast.LENGTH_SHORT).show();
 
 
-                            AudioManager audioManager = (AudioManager) getSystemService(QuickSilentoActivity.this.AUDIO_SERVICE);
+                            AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
 
                             SharedPreferences sharedPreferences_quick_2 = getSharedPreferences("QuickData", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences_quick_2.edit();
@@ -333,7 +346,41 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
                             if (selectedRadioButtonQuick.getText().equals("Silent"))
                             {
-                                audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                                Toast.makeText(QuickSilentoActivity.this, "Change 1 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
+
+                                int count = 0;
+                                try
+                                {
+                                    if(Settings.Global.getInt(getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
+                                    ++count;
+                                }
+                                catch (Settings.SettingNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if(count == 0) {
+                                    audioManager.setRingerMode(0);
+                                    audioManager.setRingerMode(0);
+                                }
+
+                                Toast.makeText(QuickSilentoActivity.this, "count" + count, Toast.LENGTH_SHORT).show();
+
+
+
+
+                               /* AudioManager audioManager2 = (AudioManager) getSystemService(this.AUDIO_SERVICE);
+                                audioManager.setRingerMode(0);
+                                audioManager.setRingerMode(0);
+*/
+
+
+
+                                Toast.makeText(QuickSilentoActivity.this, "Change 2 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
+                                //audioManager.setRingerMode(0);
+                              /*  Intent serviceIntent = new Intent(QuickSilentoActivity.this, NotificationListenerService.class);
+                                serviceIntent.putExtra("start", true);
+
+                                startService(serviceIntent);*/
                                 editor.putString("quick_change_profile", "Silent");
 
                             }
@@ -356,7 +403,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                             PendingIntent quick_pending_intent = PendingIntent.getBroadcast(QuickSilentoActivity.this, 2, quick_intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                             editor.putLong("time", calendar.getTimeInMillis());
-                            editor.commit();
+                            editor.apply();
 
                             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                             alarmManager.cancel(quick_pending_intent);
@@ -395,23 +442,23 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
             Intent notifIntent = new Intent(QuickSilentoActivity.this, AlarmList.class);
             PendingIntent pendingNotifyIntent = PendingIntent.getActivity(QuickSilentoActivity.this, 0, notifIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-            NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+            /*NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
             bigText.bigText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
-            bigText.setBigContentTitle("Silento!");
+            bigText.setBigContentTitle("Silento!");*/
             // bigText.setSummaryText("By: Vihank Vijay");
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(QuickSilentoActivity.this);
             builder.setAutoCancel(true);
-            builder.setContentTitle("Silento! - Quick Change");
+            builder.setContentTitle("Silento! - Quick Silento");
             builder.setContentText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
             builder.setSmallIcon(R.mipmap.ic_silento_logo);
-            builder.setStyle(bigText);
 
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(QuickSilentoActivity.this);
+
+        /*    TaskStackBuilder stackBuilder = TaskStackBuilder.create(QuickSilentoActivity.this);
 
 
             stackBuilder.addParentStack(AlarmList.class);
-            stackBuilder.addNextIntent(notifIntent);
+            stackBuilder.addNextIntent(notifIntent);*/
 
             builder.setContentIntent(pendingNotifyIntent);
 
