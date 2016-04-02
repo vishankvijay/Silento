@@ -78,6 +78,12 @@ public class MyExceptionReciever extends BroadcastReceiver
                             checkCurrentProfile();
                             makeitNormal();
                             ++count;
+
+                            SharedPreferences sharedPreferences = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("incoming" , true);
+                            editor.apply();
+
                             break;
                         }
 
@@ -99,7 +105,7 @@ public class MyExceptionReciever extends BroadcastReceiver
                    // if(count>0)
                    // restorePreviousProfile();
 
-                    checkCurrentProfile();
+                 //   checkCurrentProfile();
                     //makeitNormal();
 
                 }
@@ -110,6 +116,9 @@ public class MyExceptionReciever extends BroadcastReceiver
                 Toast.makeText(context, "IDLE"+count, Toast.LENGTH_SHORT).show();
 
                // if(count>0)
+                SharedPreferences sharedPreferences76 = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
+               Boolean incoming = sharedPreferences76.getBoolean("incoming", false);
+                if(incoming)
                     restorePreviousProfile();
             }
 
@@ -128,14 +137,30 @@ public class MyExceptionReciever extends BroadcastReceiver
         SharedPreferences sharedPreferences76 = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
         ringer = sharedPreferences76.getInt("profileType", 3);
 
+
         Toast.makeText(context, "restore mode "+ ringer, Toast.LENGTH_SHORT).show();
 
 
         if (ringer==0)
         {
 
-            vishankManager.setRingerMode(0);
-            vishankManager.setRingerMode(0);
+
+            int count = 0;
+            try
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    if(Settings.Global.getInt(context.getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(context.getContentResolver(), "zen_mode") == 1)
+                        ++count;
+                }
+            }
+            catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            if(count == 0) {
+                vishankManager.setRingerMode(0);
+                vishankManager.setRingerMode(0);
+            }
 
         }
         else if(ringer==AudioManager.RINGER_MODE_NORMAL){
@@ -150,6 +175,11 @@ public class MyExceptionReciever extends BroadcastReceiver
             Toast.makeText(context, "YOU Were right", Toast.LENGTH_SHORT).show();
 
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("incoming", false);
+        editor.apply();
+
 
     }
 
@@ -160,7 +190,9 @@ public class MyExceptionReciever extends BroadcastReceiver
 
         manager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 
-        manager.setStreamVolume(AudioManager.STREAM_MUSIC, 7, 0);
+        //manager.setStreamVolume(AudioManager.STREAM_MUSIC, 7, 0);
+
+
     }
 
     private void checkCurrentProfile()
@@ -206,7 +238,8 @@ public class MyExceptionReciever extends BroadcastReceiver
 
 
 
-        editor.commit();
+
+        editor.apply();
 
 
     }

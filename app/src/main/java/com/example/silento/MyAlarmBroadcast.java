@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.AudioManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -29,12 +31,12 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
         String profile_type = intent.getExtras().getString("profile_type");
 
-        AudioManager am_initial = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+  /*      AudioManager am_initial = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
         SharedPreferences sharedPreferences_initial_profile = context.getSharedPreferences("MyInitialProfile", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences_initial_profile.edit();
         editor.putInt("initial_profile", am_initial.getRingerMode());
         editor.commit();
-
+*/
         if (id == 0) {
 
 
@@ -44,10 +46,10 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
             if (!quick_silento_active_state_0) {
 
                 AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
-                if (profile_type.equals("Silent"))
-                {
-                    am.setRingerMode(0);
-                    am.setRingerMode(0);
+                if (profile_type.equals("Silent")) {
+
+                    makeItSilent(context);
+
                 } else if (profile_type.equals("Vibration")) {
                     am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 
@@ -145,6 +147,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
                         if (((startTime > temp_start_time) || temp_start_time == 0) && (startTime < current_time) && (EndTime > current_time)) {
                             temp_start_time = (int) startTime;
                             profileType_2 = alarms_start.getString(7);
+                            Toast.makeText(context, "1 inside", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -160,10 +163,8 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
                     if (!profileType_2.equals("")) {
 
-                        if (profileType_2.equals("Silent"))
-                        {
-                            am.setRingerMode(0);
-                            am.setRingerMode(0);
+                        if (profileType_2.equals("Silent")) {
+                            makeItSilent(context);
                         } else if (profileType_2.equals("Vibration")) {
                             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                         } else if (profileType_2.equals("Normal")) {
@@ -173,10 +174,8 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
 
                     } else {
-                        if (profile_type.equals("Silent"))
-                        {
-                            am.setRingerMode(0);
-                            am.setRingerMode(0);
+                        if (profile_type.equals("Silent")) {
+                            makeItSilent(context);
                         } else if (profile_type.equals("Vibration")) {
                             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 
@@ -249,7 +248,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
         if (id == 2) {
 
-           // Toast.makeText(context, "called", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, "called", Toast.LENGTH_SHORT).show();
 
             dataBaseManipulator = new DataBaseManipulator(context);
             String startHour;
@@ -286,7 +285,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
                     long startTime = (60 * startMinute_int) + (3600 * startHour_int);
                     long EndTime = (60 * EndMinute_int) + (3600 * EndHour_int);
-                    Toast.makeText(context, "Inside " +current_hour, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Inside " + current_hour, Toast.LENGTH_SHORT).show();
 
                     if (((startTime > temp_start_time) || temp_start_time == 0) && (startTime < current_time) && (EndTime > current_time)) {
                         temp_start_time = (int) startTime;
@@ -307,32 +306,23 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
                 AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
 
-                if (profileType_2.equals("Silent")) 
-                {
-                    am.setRingerMode(0);
-                    am.setRingerMode(0);
+                if (profileType_2.equals("Silent")) {
+                    makeItSilent(context);
                     Toast.makeText(context, "called 0", Toast.LENGTH_SHORT).show();
-                } 
-                else if (profileType_2.equals("Vibration"))
-                {
+                } else if (profileType_2.equals("Vibration")) {
                     am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                     Toast.makeText(context, "called 1", Toast.LENGTH_SHORT).show();
-                } 
-                else if (profileType_2.equals("Normal"))
-                {
+                } else if (profileType_2.equals("Normal")) {
                     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-                      Toast.makeText(context, "called normal", Toast.LENGTH_SHORT).show();
-                } 
-                else 
-                {
+                    Toast.makeText(context, "called normal", Toast.LENGTH_SHORT).show();
+                } else {
 
                     SharedPreferences sharedPreferences_quick_2 = context.getSharedPreferences("QuickData", Context.MODE_PRIVATE);
                     int quick_silento_profile_if_not_conflicting = sharedPreferences_quick_2.getInt("quick_silento_profile_if_not_conflicting", 2);
 
                     switch (quick_silento_profile_if_not_conflicting) {
                         case 0:
-                            am.setRingerMode(0);
-                            am.setRingerMode(0);
+                            makeItSilent(context);
                             Toast.makeText(context, "called  non con 0", Toast.LENGTH_SHORT).show();
                             break;
 
@@ -364,6 +354,25 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
         }
 
+
+    }
+
+    private void makeItSilent(Context context) {
+        AudioManager silent_manager = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+        int count = 0;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                if (Settings.Global.getInt(context.getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(context.getContentResolver(), "zen_mode") == 1)
+                    ++count;
+            }
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (count == 0) {
+            silent_manager.setRingerMode(0);
+            silent_manager.setRingerMode(0);
+        }
 
     }
 

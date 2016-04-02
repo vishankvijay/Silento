@@ -379,7 +379,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                     .setTarget(endTimeButton)
                                     .setDismissText("GOT IT")
                                     .setContentText("Use this to set the END TIME of your event.")
-                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                            //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                     .singleUse("2") // provide a unique ID used to ensure it is only shown once
                                     .setListener(new IShowcaseListener() {
                                         @Override
@@ -395,7 +395,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                     .setTarget(daysEnabledTextview)
                                                     .setDismissText("OK")
                                                     .setContentText("Use this to set the Enabled Days of your event.")
-                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                            //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                     .singleUse("3") // provide a unique ID used to ensure it is only shown once
                                                     .setListener(new IShowcaseListener() {
                                                         @Override
@@ -410,7 +410,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                                     .setTarget(start_profileTypeTextview)
                                                                     .setDismissText("GOT IT")
                                                                     .setContentText("Use this to set the PROFILE you want on the START of your EVENT")
-                                                                    //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
+                                                                            //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                     .singleUse("4") // provide a unique ID used to ensure it is only shown once
                                                                     .setListener(new IShowcaseListener() {
                                                                         @Override
@@ -566,7 +566,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                     //Toast.makeText(AlarmDetails.this, "Silent Selected", Toast.LENGTH_SHORT).show();
                                 } else if (start_selectedRadioButton.getText().equals("Vibration")) {
                                     repeat.putExtra("start_profileType", "Vibration");
-                                   // Toast.makeText(AlarmDetails.this, "Vibration Selected", Toast.LENGTH_SHORT).show();
+                                    // Toast.makeText(AlarmDetails.this, "Vibration Selected", Toast.LENGTH_SHORT).show();
                                 } else {
                                     repeat.putExtra("start_profileType", "Normal");
                                     //Toast.makeText(AlarmDetails.this, "Normal Selected", Toast.LENGTH_SHORT).show();
@@ -576,19 +576,19 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                                     if (end_selectedRadioButton.getText().equals("Silent")) {
                                         repeat.putExtra("end_profileType", "Silent");
-                                       // Toast.makeText(AlarmDetails.this, " End Silent Selected", Toast.LENGTH_SHORT).show();
+                                        // Toast.makeText(AlarmDetails.this, " End Silent Selected", Toast.LENGTH_SHORT).show();
                                     } else if (end_selectedRadioButton.getText().equals("Vibration")) {
                                         repeat.putExtra("end_profileType", "Vibration");
-                                       // Toast.makeText(AlarmDetails.this, "End Vibration Selected", Toast.LENGTH_SHORT).show();
+                                        // Toast.makeText(AlarmDetails.this, "End Vibration Selected", Toast.LENGTH_SHORT).show();
                                     } else {
                                         repeat.putExtra("end_profileType", "Normal");
-                                       // Toast.makeText(AlarmDetails.this, "End Normal Selected", Toast.LENGTH_SHORT).show();
+                                        // Toast.makeText(AlarmDetails.this, "End Normal Selected", Toast.LENGTH_SHORT).show();
                                     }
 
                                 } else
                                 {
                                     // if (toastCount == 1)
-                                   // Snackbar.make(activity_alarm_details_layout, "Select End Profile Type.", Snackbar.LENGTH_SHORT).show();
+                                    // Snackbar.make(activity_alarm_details_layout, "Select End Profile Type.", Snackbar.LENGTH_SHORT).show();
                                     showSnackbar("Select End Profile Type.");
 
                                     //Toast.makeText(AlarmDetails.this, "Select End  Profile Type", Toast.LENGTH_SHORT).show();
@@ -599,7 +599,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                 // if (toastCount == 1)
 
                                 showSnackbar("Select Start Profile Type.");
-                               // Snackbar.make(activity_alarm_details_layout, "Select Start Profile Type.", Snackbar.LENGTH_SHORT).show();
+                                // Snackbar.make(activity_alarm_details_layout, "Select Start Profile Type.", Snackbar.LENGTH_SHORT).show();
 
                                 //Toast.makeText(AlarmDetails.this, "Select Start  Profile Type", Toast.LENGTH_SHORT).show();
                             }
@@ -623,8 +623,8 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                             }
                         } else
-                        showSnackbar("Select Repeat Days.");
-                           // Snackbar.make(activity_alarm_details_layout, "Select Repeat Days.", Snackbar.LENGTH_SHORT).show();
+                            showSnackbar("Select Repeat Days.");
+                        // Snackbar.make(activity_alarm_details_layout, "Select Repeat Days.", Snackbar.LENGTH_SHORT).show();
                         //Toast.makeText(AlarmDetails.this, "Select Repeat Days", Toast.LENGTH_LONG).show();
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -755,7 +755,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     {
         if(count_layout_containing_profile_types == 0 && count_layout_containing_chechkbox_start >= 1 && count_layout_containing_chechkbox_end >= 1)
         {
-           show_cardviw_with_profiles();
+            show_cardviw_with_profiles();
             //count_layout_containing_profile_types++;
         }
 
@@ -766,7 +766,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     public void onBackPressed() {
         super.onBackPressed();
 
-       // startActivity(new Intent(AlarmDetails.this, AlarmList.class));
+        // startActivity(new Intent(AlarmDetails.this, AlarmList.class));
         finish();
         overridePendingTransition(R.anim.slide_in_right, 0);
 

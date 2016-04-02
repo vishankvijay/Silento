@@ -1,5 +1,6 @@
 package com.example.silento;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 /**
  * Created by vishank on 23/3/16.
  */
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class NotificationListenerService extends android.service.notification.NotificationListenerService
 {
     @Override

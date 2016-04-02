@@ -57,7 +57,7 @@
             android:src="@mipmap/ic_action_new"
             fab:fab_colorNormal="@color/mdtp_accent_color"
             fab:fab_colorPressed="@color/mdtp_accent_color"
-            fab:fab_colorRipple="@color/primaryColor" />
+            fab:fab_colorRipple="@color/accentColor" />
 
     </FrameLayout>
 

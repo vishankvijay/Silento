@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.silento.AlarmDetails">
     <item
-        android:id="@+id/action_save"
-        android:orderInCategory="200"
-        android:icon="@mipmap/ic_action_done"
-        app:showAsAction="always" />
+        android:id="@+id/action_shake_switch"
+        android:title=""
+        app:showAsAction="always"
+        app:actionLayout="@layout/switch_shake_silento"/>
 
 
 </menu>

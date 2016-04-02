@@ -19,6 +19,7 @@ public class HelpActivity extends AppCompatActivity {
     TextView shake_silento_des;
     TextView exceptions_des;
     TextView settings_des;
+    TextView about_silento_des;
 
     Toolbar toolbar;
 
@@ -27,12 +28,14 @@ public class HelpActivity extends AppCompatActivity {
     LinearLayout shake_silento;
     LinearLayout exceptions;
     LinearLayout settings;
+    LinearLayout about_silento;
 
     TextView event_title;
     TextView quick_title;
     TextView shake_title;
     TextView exceptions_title;
     TextView settings_title;
+    TextView about_silento_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class HelpActivity extends AppCompatActivity {
     private void showTutorial()
     {
         new MaterialShowcaseView.Builder(this)
-                .setTarget(quick_silento)
+                .setTarget(event_title)
                 .setDismissText("GOT IT")
                 .setContentText("Click on any of the items to know more about them.")
                 .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
@@ -77,18 +80,23 @@ public class HelpActivity extends AppCompatActivity {
         settings_des = (TextView) findViewById(R.id.settings_des);
         settings_des.setVisibility(View.GONE);
 
+        about_silento_des = (TextView) findViewById(R.id.about_silento_des);
+        about_silento_des.setVisibility(View.GONE);
+
 
         events = (LinearLayout) findViewById(R.id.event);
         quick_silento = (LinearLayout) findViewById(R.id.quick_silento);
         shake_silento = (LinearLayout) findViewById(R.id.shake_silento);
         exceptions = (LinearLayout) findViewById(R.id.exceptions);
         settings = (LinearLayout) findViewById(R.id.settings);
+        about_silento = (LinearLayout) findViewById(R.id.about_silento);
 
         event_title = (TextView) findViewById(R.id.event_title);
         quick_title = (TextView) findViewById(R.id.quick_title);
         shake_title = (TextView) findViewById(R.id.shake_title);
         exceptions_title = (TextView) findViewById(R.id.exceptions_title);
         settings_title = (TextView) findViewById(R.id.settings_title);
+        about_silento_title = (TextView) findViewById(R.id.about_silento_title);
 
 
     }
@@ -105,6 +113,11 @@ public class HelpActivity extends AppCompatActivity {
         TextView temp_title = null;
 
         switch (v.getId()) {
+            case R.id.about_silento:
+                temp_TextView = about_silento_des;
+                temp_title = about_silento_title;
+                break;
+
             case R.id.event:
                 temp_TextView = event_des;
                 temp_title = event_title;

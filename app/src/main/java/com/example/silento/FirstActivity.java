@@ -1,6 +1,7 @@
 package com.example.silento;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,8 +12,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class FirstActivity extends Activity {
 
@@ -27,6 +28,11 @@ public class FirstActivity extends Activity {
     LinearLayout third_layout_content;
     LinearLayout fourth_layout_content;
     LinearLayout fifth_layout_content;
+    ImageView img_first;
+    ImageView img_second;
+    ImageView img_third;
+    ImageView img_fourth;
+    ImageView img_fifth;
     int count = 0;
 
     @Override
@@ -34,7 +40,10 @@ public class FirstActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
+
+
         checkAppIntro();
+
 
         instantiate();
 
@@ -137,7 +146,7 @@ public class FirstActivity extends Activity {
                 });
                 animation = null;
 
-               // holdFirstActivityAnimation(false);
+                // holdFirstActivityAnimation(false);
 
             }
         });
@@ -211,7 +220,6 @@ public class FirstActivity extends Activity {
         });
 
 
-
         fifthLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,12 +238,11 @@ public class FirstActivity extends Activity {
                     public void onAnimationEnd(Animation animation) {
                         startActivity(new Intent(FirstActivity.this, SettingsActivity.class));
                         overridePendingTransition(R.anim.slide_in_left, 0);
-                       // finish();
+                        // finish();
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animation animation)
-                    {
+                    public void onAnimationRepeat(Animation animation) {
 
                     }
                 });
@@ -255,8 +262,7 @@ public class FirstActivity extends Activity {
         fifthLayout.setVisibility(View.VISIBLE);*/
     }
 
-    private void checkAppIntro()
-    {
+    private void checkAppIntro() {
 
         //  Declare a new thread to do a preference check
         Thread t = new Thread(new Runnable() {
@@ -293,8 +299,7 @@ public class FirstActivity extends Activity {
         t.start();
     }
 
-    private void instantiate()
-    {
+    private void instantiate() {
         firstLayout = (LinearLayout) findViewById(R.id.first_layout);
         secondLayout = (LinearLayout) findViewById(R.id.second_layout);
         thirdLayout = (LinearLayout) findViewById(R.id.third_layout);
@@ -307,10 +312,16 @@ public class FirstActivity extends Activity {
         third_layout_content = (LinearLayout) findViewById(R.id.third_layout_content);
         fourth_layout_content = (LinearLayout) findViewById(R.id.fourth_layout_content);
         fifth_layout_content = (LinearLayout) findViewById(R.id.fifth_layout_content);
+
+        img_first = (ImageView) findViewById(R.id.img_first);
+        img_second = (ImageView) findViewById(R.id.img_second);
+        img_third = (ImageView) findViewById(R.id.img_third);
+        img_fourth = (ImageView) findViewById(R.id.img_fourth);
+        img_fifth = (ImageView) findViewById(R.id.img_fifth);
+
     }
 
-    private void holdFirstActivityAnimation(boolean b)
-    {
+    private void holdFirstActivityAnimation(boolean b) {
         SharedPreferences sharedPreferences_2 = getSharedPreferences("holdFirstActivityAnimation", MODE_PRIVATE);
         SharedPreferences.Editor editor2 = sharedPreferences_2.edit();
         editor2.putBoolean("holdFirstActivityAnimation", b);
@@ -322,8 +333,10 @@ public class FirstActivity extends Activity {
     public void onWindowFocusChanged(boolean hasFocus) {
         // super.onWindowFocusChanged(hasFocus);
 
+
         SharedPreferences sharedPreferences_1 = getSharedPreferences("holdFirstActivityAnimation", MODE_PRIVATE);
         Boolean holdFirstActivityAnimation = sharedPreferences_1.getBoolean("holdFirstActivityAnimation", false);
+
 
         if ((!holdFirstActivityAnimation) && count == 0) {
             if (hasFocus) {
@@ -419,7 +432,6 @@ public class FirstActivity extends Activity {
 
                     }
                 });*/
-
 
 
                 TranslateAnimation animate = new TranslateAnimation(-firstLayout.getWidth(), 0, 0, 0);
@@ -652,23 +664,29 @@ public class FirstActivity extends Activity {
             fifthLayout.setVisibility(View.VISIBLE);
             animation = null;*/
 
-            }
-            else
-            {
+            } else {
                 //holdFirstActivityAnimation(false);
                 //Toast.makeText(FirstActivity.this, "without focus", Toast.LENGTH_SHORT).show();
 
             }
 
-        }
-        else
-        {
+        } else {
             firstLayout.setVisibility(View.VISIBLE);
             secondLayout.setVisibility(View.VISIBLE);
             thirdLayout.setVisibility(View.VISIBLE);
             fourthLayout.setVisibility(View.VISIBLE);
             fifthLayout.setVisibility(View.VISIBLE);
         }
+
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(firstLayout.getWidth() / 4, 0, 0, 0);
+        img_first.setLayoutParams(lp);
+        img_second.setLayoutParams(lp);
+        img_third.setLayoutParams(lp);
+        img_fourth.setLayoutParams(lp);
+        img_fifth.setLayoutParams(lp);
+        //Toast.makeText(FirstActivity.this, ""+i, Toast.LENGTH_SHORT).show();
 
 
         //Toast.makeText(FirstActivity.this, "Window Called", Toast.LENGTH_SHORT).show();
@@ -698,7 +716,6 @@ public class FirstActivity extends Activity {
         editor_3.putBoolean("holdFirstActivityAnimation", false);
         editor_3.commit();
     }
-
 
 
     @Override

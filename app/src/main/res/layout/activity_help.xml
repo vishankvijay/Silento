@@ -13,7 +13,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#fff">
 
 
         <LinearLayout
@@ -23,25 +24,72 @@
             android:padding="16dp">
 
             <LinearLayout
+                android:id="@+id/about_silento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="toggle_contents"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/about_silento_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/down"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:text="About Silento!"
+                    android:textColor="#424242"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/about_silento_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="You don't need to go through the embarrassment of having your phone ringing at the wrong time anymore.\n\nSilento! can automatically enable or disable your mobile's silent/vibrate mode through a simple and friendly interface." />
+
+
+                <!-- <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:text="Silento! can automatically enable or disable your mobile's silent/vibrate mode through a simple and friendly interface." />
+ -->
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dedede" />
+
+            <LinearLayout
                 android:id="@+id/event"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:onClick="toggle_contents"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/event_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:drawableLeft="@mipmap/down"
                     android:drawablePadding="15dp"
-                    android:drawableTint="@color/accentColor"
                     android:gravity="center_vertical"
                     android:text="Events"
-                    android:textColor="@color/accentColor"
+                    android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -53,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="A small Description"
+                    android:text="Silento automatically silences your phone based on your weekly schedule.\n\nYou just have to create an event, give it a name , give it a time range , and select which days of the week you have the event . You also have to select the start and end profile type.\n\nYou will be notified every time the event occurs and your profile is changed.\n\nThat's all!"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -72,7 +120,8 @@
                 android:clickable="true"
                 android:onClick="toggle_contents"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/quick_title"
@@ -82,8 +131,8 @@
                     android:drawableLeft="@mipmap/down"
                     android:drawablePadding="15dp"
                     android:gravity="center_vertical"
-                    android:text="Quick Silent"
-                    android:textColor="@color/mdtp_accent_color"
+                    android:text="Quick Silento!"
+                    android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="A small Description"
+                    android:text="Events section will manage all of your daily schedule.\nBut what if something unscheduled comes up like meetings and movies??\n\nDon't worry we got you.\nYou can use the Quick Silento feature to silent/vibrate your device for whatever else might come up.\n\nJust set the time range and select the profile type you want for that time range and we will quickly manage your profile."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -114,7 +163,8 @@
                 android:clickable="true"
                 android:onClick="toggle_contents"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/shake_title"
@@ -124,8 +174,8 @@
                     android:drawableLeft="@mipmap/down"
                     android:drawablePadding="15dp"
                     android:gravity="center_vertical"
-                    android:text="Shake Silento"
-                    android:textColor="@color/primaryColor"
+                    android:text="Shake Silento!"
+                    android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -137,7 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="A small Description"
+                    android:text="Shake Silento! allows you to change your profile just by Shaking your device.\n\nJust select your desired shake sensivity and set the profile you want when you shake you device\n\nWe also provide a quick and easy way to turn this feature off."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -165,10 +215,9 @@
                     android:clickable="false"
                     android:drawableLeft="@mipmap/down"
                     android:drawablePadding="15dp"
-                    android:drawableTint="@color/mdtp_accent_color"
                     android:gravity="center_vertical"
                     android:text="Exceptions"
-                    android:textColor="#000"
+                    android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -180,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="A small Description"
+                    android:text="Exceptions lets certain callers ring through even with your phone in silent/vibrate mode.\n\nAdd as many numbers as you want to the Exceptions list and they'll ring regardless of the phones ringer setting.\n\nWe also provide a quick and easy way to turn this feature off."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -209,8 +258,8 @@
                     android:drawableLeft="@mipmap/down"
                     android:drawablePadding="15dp"
                     android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textColor="#000"
+                    android:text="Feedback"
+                    android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -222,16 +271,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="A small Description"
+                    android:text="Besides all these features, you still have a support team ready to assist you and listen your suggestions.\n\nJust go to Settings -> Feedback and send us your suggestions or questions and we will get in touch with you."
                     android:textSize="15sp" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:background="#dedede" />
+
 
 
             <!-- <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"

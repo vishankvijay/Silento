@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
@@ -76,7 +77,10 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
 
         try {
-            int i = Settings.Global.getInt(getContentResolver(), "zen_mode");
+            int i = 0;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                i = Settings.Global.getInt(getContentResolver(), "zen_mode");
+            }
 
             Toast.makeText(QuickSilentoActivity.this, "wow " + i, Toast.LENGTH_SHORT).show();
         } catch (Settings.SettingNotFoundException e) {
@@ -342,17 +346,21 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
                             SharedPreferences sharedPreferences_quick_2 = getSharedPreferences("QuickData", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences_quick_2.edit();
-                            editor.putInt("quick_silento_profile_if_not_conflicting" ,audioManager.getRingerMode());
+                          //  editor.putInt("quick_silento_profile_if_not_conflicting" ,audioManager.getRingerMode());
+
+                            getProfileBeforeChange();
 
                             if (selectedRadioButtonQuick.getText().equals("Silent"))
                             {
-                                Toast.makeText(QuickSilentoActivity.this, "Change 1 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
+                             //   Toast.makeText(QuickSilentoActivity.this, "Change 1 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
 
                                 int count = 0;
                                 try
                                 {
-                                    if(Settings.Global.getInt(getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
-                                    ++count;
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                                        if(Settings.Global.getInt(getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
+                                        ++count;
+                                    }
                                 }
                                 catch (Settings.SettingNotFoundException e) {
                                     e.printStackTrace();
@@ -375,7 +383,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
 
 
-                                Toast.makeText(QuickSilentoActivity.this, "Change 2 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(QuickSilentoActivity.this, "Change 2 " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();
                                 //audioManager.setRingerMode(0);
                               /*  Intent serviceIntent = new Intent(QuickSilentoActivity.this, NotificationListenerService.class);
                                 serviceIntent.putExtra("start", true);
@@ -430,6 +438,51 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void getProfileBeforeChange()
+    {
+        AudioManager maudio=(AudioManager)getSystemService(AUDIO_SERVICE);
+        int ringerMode=maudio.getRingerMode();
+
+        SharedPreferences sharedPreferences_quick_2 = getSharedPreferences("QuickData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences_quick_2.edit();
+
+
+
+      //  Toast.makeText(context, " mode " + ringerMode, Toast.LENGTH_SHORT).show();
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            try {
+                switch (Settings.Global.getInt(getContentResolver(), "zen_mode"))
+                {
+                    case 2: ;
+                    case 1:
+                        editor.putInt("quick_silento_profile_if_not_conflicting", 0);
+
+                        break;
+
+                    case  0 :
+                        if(ringerMode == 1)
+                            editor.putInt("quick_silento_profile_if_not_conflicting", 1);
+                        else
+                            editor.putInt("quick_silento_profile_if_not_conflicting", 2);
+
+                }
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            editor.putInt("quick_silento_profile_if_not_conflicting", ringerMode);
+        }
+
+
+
+        editor.apply();
     }
 
     private void showNotification(Calendar calendar)

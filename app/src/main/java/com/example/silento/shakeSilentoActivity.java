@@ -75,7 +75,7 @@ public class shakeSilentoActivity extends AppCompatActivity {
 
         activity_shake_silento_layout = (RelativeLayout) findViewById(R.id.activity_shake_silento_layout);
 
-        //Toast.makeText(shakeSilentoActivity.this, ""+ sensivity_slider.getValue(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(shakeSilentoActivity.this, ""+ sensivity_slider.getValue(), Toast.LENGTH_SHORT).show();z
     }
 
 

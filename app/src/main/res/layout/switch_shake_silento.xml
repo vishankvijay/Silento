@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.rey.material.widget.Switch
+        android:id="@+id/enable_update_switch"
+        style="@style/Material.Widget.Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:checked="true"
+        app:sw_trackCap="round"
+        app:sw_trackSize="10dp"
+        android:layout_margin="10dp"
+        app:sw_thumbColor="#D56E83"
+        android:layout_centerVertical="true"
+
+        />
+
+</RelativeLayout>

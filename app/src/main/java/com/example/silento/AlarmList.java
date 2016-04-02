@@ -94,6 +94,8 @@ public class AlarmList extends AppCompatActivity {
         /*metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);*/
 
+
+
         instantiate();
 
        /* drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);

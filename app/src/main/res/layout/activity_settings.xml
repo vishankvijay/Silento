@@ -71,7 +71,7 @@
                android:gravity="center"
                android:checked="true"
                app:sw_trackCap="round"
-               app:sw_trackSize="1dp"
+               app:sw_trackSize="10dp"
                android:layout_margin="10dp"
                android:layout_gravity="center"/>
 

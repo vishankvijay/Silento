@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:id="@+id/parent_layout"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,31 +13,32 @@
         android:layout_weight="1"
         android:background="#F4B8A4"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:visibility="invisible">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/first_layout_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:orientation="horizontal"
-            android:id="@+id/first_layout_content">
+           >
 
             <ImageView
+                android:id="@+id/img_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/first"
-                android:tint="#fff"
-                android:layout_marginLeft="85dp"/>
+                android:tint="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
                 android:text="Events"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -48,30 +49,31 @@
         android:layout_weight="1"
         android:background="#dcee6d66"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:visibility="invisible">
+
         <LinearLayout
             android:id="@+id/second_layout_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_second"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/second"
-                android:tint="#fff"
-                android:layout_marginLeft="85dp"/>
+                android:tint="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
                 android:text="Quick Silento"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -80,33 +82,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:background="#D56E83"
         android:orientation="horizontal"
         android:visibility="invisible">
+
         <LinearLayout
             android:id="@+id/third_layout_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="85dp">
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_third"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/third"
-                android:tint="#fff"
-                android:layout_marginLeft="0dp"/>
+                android:tint="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
                 android:text="Shake Silento"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -114,7 +116,7 @@
         android:id="@+id/fourth_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
         android:layout_weight="1"
         android:background="#8E6E85"
         android:orientation="horizontal"
@@ -122,28 +124,26 @@
 
         <LinearLayout
             android:id="@+id/fourth_layout_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="85dp">
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_fourth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/fourth"
-                android:tint="#fff"
-                android:layout_marginLeft="0dp"/>
+                android:tint="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
                 android:text="Exceptions"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"
-                android:layout_marginLeft="12dp"
-                android:layout_gravity="center"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -152,33 +152,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:background="#355C7D"
         android:orientation="horizontal"
         android:visibility="invisible">
+
         <LinearLayout
             android:id="@+id/fifth_layout_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="85dp">
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_fifth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/fifthb"
-                android:tint="#fff"
-                android:layout_marginLeft="0dp"/>
+                android:tint="#fff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
                 android:text="Settings"
-                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"
-                android:layout_marginLeft="12dp"
-                android:layout_gravity="center"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
