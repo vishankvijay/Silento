@@ -48,7 +48,9 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
     Toolbar toolbar;
 
-    com.melnykov.fab.FloatingActionButton fab ;
+    //com.melnykov.fab.FloatingActionButton fab ;
+
+    FloatingActionButton fab;
 
     Switch exceptionEnablSwitch;
 
@@ -76,8 +78,8 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
 
         initializeListView();
-        fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
-        fab.attachToListView(exceptionListView);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab.attachToListView(exceptionListView);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,12 +33,11 @@ public class aboutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         logo = (ImageView) findViewById(R.id.logo);
 
-        logo.setRotation(90);
-        //vfvtvv
+        final Animation animRotate = AnimationUtils.loadAnimation(this , R.anim.scale);
+        logo.startAnimation(animRotate);
 
-        //holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.circlepicker);
-        //holoCircleSeekBar.setValue(5);
-        //Toast.makeText(aboutActivity.this, "" + holoCircleSeekBar.getValue(), Toast.LENGTH_SHORT).show();
+
+
     }
 
     @Override

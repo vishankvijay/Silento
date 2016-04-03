@@ -51,7 +51,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/toolbar"
-                android:divider="@android:color/transparent"
+                android:divider="@android:color/darker_gray"
                 android:dividerHeight="1dp"
                 android:padding="16dp"
                 android:scrollbars="none" />
@@ -74,7 +74,7 @@
 
     </RelativeLayout>
 
-    <com.melnykov.fab.FloatingActionButton
+    <!--<com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,7 +83,25 @@
         android:src="@mipmap/ic_action_new"
         fab:fab_colorNormal="@color/mdtp_accent_color"
         fab:fab_colorPressed="@color/primaryColor"
-        fab:fab_colorRipple="@color/primaryColor" />
+        fab:fab_colorRipple="@color/primaryColor" />-->
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@mipmap/ic_action_new"
+        android:visibility="visible"
+        app:backgroundTint="@color/mdtp_accent_color"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:rippleColor="#355C7D" />
 
 
 </android.support.design.widget.CoordinatorLayout>

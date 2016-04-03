@@ -156,7 +156,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                 current = "start";
                 //tpd.setThemeDark(true);
-                tpd.vibrate(true);
+                tpd.vibrate(false);
                 tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
                     @Override
@@ -185,7 +185,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                 current = "end";
                 //tpd.setThemeDark(true);
-                tpd2.vibrate(true);
+                tpd2.vibrate(false);
                 tpd2.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
@@ -358,7 +358,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
             new MaterialShowcaseView.Builder(this)
                     .setTarget(startTimeButton)
-                    .setDismissText("NEXT")
+                    .setDismissText("OK")
                     .setContentText("Use this to set the START TIME of your event.")
                     .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
                     .singleUse("1")// provide a unique ID used to ensure it is only shown once
@@ -377,7 +377,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                     .setTarget(endTimeButton)
-                                    .setDismissText("GOT IT")
+                                    .setDismissText("OK")
                                     .setContentText("Use this to set the END TIME of your event.")
                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                     .singleUse("2") // provide a unique ID used to ensure it is only shown once
@@ -408,7 +408,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                         {
                                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                                     .setTarget(start_profileTypeTextview)
-                                                                    .setDismissText("GOT IT")
+                                                                    .setDismissText("OK")
                                                                     .setContentText("Use this to set the PROFILE you want on the START of your EVENT")
                                                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                     .singleUse("4") // provide a unique ID used to ensure it is only shown once

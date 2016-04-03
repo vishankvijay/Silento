@@ -17,8 +17,10 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.GravityCompat;
@@ -84,7 +86,11 @@ public class AlarmList extends AppCompatActivity {
 
     recycler_adapter recycler_adapter;
 
-    com.melnykov.fab.FloatingActionButton fab ;
+    //com.melnykov.fab.FloatingActionButton fab ;
+
+    FloatingActionButton fab;
+
+    CoordinatorLayout alarmList_coordinator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +116,7 @@ public class AlarmList extends AppCompatActivity {
 //        alarmListview.setOnItemClickListener(AlarmList.this);
 //        alarmListview.setOnItemLongClickListener(AlarmList.this);
 
-        fab.attachToRecyclerView(alarmRecyclerView);
+        //fab.attachToRecyclerView(alarmRecyclerView);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -256,14 +262,32 @@ public class AlarmList extends AppCompatActivity {
         getSupportActionBar().setTitle("Events");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        alarmList_coordinator = (CoordinatorLayout) findViewById(R.id.alarmList_coordinator);
+
         //alarmListview = (ListView) findViewById(R.id.alarm_list);
 
         alarmRecyclerView = (RecyclerView) findViewById(R.id.alarm_list);
         alarmRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         alarmRecyclerView.setHasFixedSize(true);
+
+        alarmRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (newState ==  RecyclerView.SCROLL_STATE_IDLE) {
+                    fab.show();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 && fab.isShown())
+                    fab.hide();
+            }
+        });
        // alarmRecyclerView.setAdapter(new recycler_adapter(this));
 
-        fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.alarm_list_fab_button);
 
         //mDrawer = (NavigationView) findViewById(R.id.main_drawer);
       //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -775,6 +799,19 @@ public class AlarmList extends AppCompatActivity {
         super.onBackPressed();
         finish();
         overridePendingTransition(R.anim.slide_in_right, 0);
+    }
+
+    private void showAlarmSnackbar(String message)
+    {
+        Snackbar.make(alarmList_coordinator, message, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(R.color.mdtp_accent_color ))
+                .show();
     }
 
 

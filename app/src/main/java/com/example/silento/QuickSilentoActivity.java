@@ -115,7 +115,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
                 //current = "start";
                 //tpd.setThemeDark(true);
-                tpd.vibrate(true);
+                tpd.vibrate(false);
                 tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
                     @Override
