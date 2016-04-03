@@ -2,27 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.silento.ThirdFragment"
-    android:background="#BCAAA4">
+    android:background="#A5D6A7"
+    tools:context="com.example.silento.ThirdFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:padding="20dp"
-        android:textStyle="bold|italic"
         android:gravity="center"
-        android:text="Silento automatically silences your phone based on your weekly schedule through a simple and friendly interface."/>
-
+        android:padding="20dp"
+        android:text="Silento automatically silences your phone based on your weekly schedule through a simple and friendly interface."
+        android:textColor="#424242"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/intro_third"
-        android:layout_gravity="center" />
-
-
+        android:layout_gravity="center"
+        android:src="@drawable/intro_third" />
 
 
 </FrameLayout>

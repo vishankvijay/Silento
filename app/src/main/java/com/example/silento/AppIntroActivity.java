@@ -9,7 +9,7 @@ import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class AppIntroActivity extends AppIntro {
+public class AppIntroActivity extends AppIntro2 {
 
     @Override
     public void init(Bundle savedInstanceState)
@@ -61,13 +61,13 @@ public class AppIntroActivity extends AppIntro {
 
     }
 
-    @Override
+/*    @Override
     public void onSkipPressed() {
         startActivity(new Intent(AppIntroActivity.this, FirstActivity.class));
         overridePendingTransition(R.anim.slide_in_left, 0);
         finish();
 
-    }
+    }*/
 
     @Override
     public void onDonePressed() {

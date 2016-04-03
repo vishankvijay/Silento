@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.jesusm.holocircleseekbar.lib.HoloCircleSeekBar;
 import com.rey.material.widget.Switch;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+
 public class shakeSilentoActivity extends AppCompatActivity implements Switch.OnCheckedChangeListener, HoloCircleSeekBar.OnCircleSeekBarChangeListener, RadioGroup.OnCheckedChangeListener {
     Toolbar toolbar;
 
@@ -69,8 +71,11 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
 
        // shakeEnablSwitch.setChecked(enableValue);
 
-        float seekBarValue_float = (float) seekBarValue;
+        //float seekBarValue_float = (float) seekBarValue;
         //sensivity_slider.setValue(seekBarValue_float ,false);
+        if(seekBarValue == 0 || seekBarValue ==1)
+        sensivity_slider.setValue(2);
+        else
         sensivity_slider.setValue(seekBarValue);
         sensivity_slider.setOnSeekBarChangeListener(this);
 
@@ -95,6 +100,9 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
 
         enableValue = sharedPreferences.getBoolean("enableValue", false);
         shakeEnablSwitch.setChecked(enableValue);
+
+        //showTutorial(shakeEnablSwitch);
+
        // Toast.makeText(shakeSilentoActivity.this, "Called", Toast.LENGTH_SHORT).show();
         return true;
     }
@@ -149,6 +157,17 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         }
 
         return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void showTutorial(Switch shakeEnablSwitch)
+    {
+        new MaterialShowcaseView.Builder(this)
+                .setTarget(shakeEnablSwitch)
+                .setDismissText("GOT IT")
+                .setContentText("Use this to ENABLE or Disable your Event.")
+                .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
+                .singleUse("shake_1") // provide a unique ID used to ensure it is only shown once
+                .show();
     }
 
    /* @Override
@@ -242,6 +261,11 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         editor.putInt("seekBarValue", sensivity_slider.getValue());
         editor.apply();
 
+        Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
+        shakeServiceIntent2.setAction("register");
+        startService(shakeServiceIntent2);
+
+
     }
 
     @Override
@@ -259,6 +283,10 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("profileType", profile_type);
         editor.apply();
+
+        Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
+        shakeServiceIntent2.setAction("register");
+        startService(shakeServiceIntent2);
 
     }
 

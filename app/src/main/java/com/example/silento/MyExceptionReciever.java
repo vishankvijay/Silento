@@ -142,6 +142,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
             }
 
             if (count == 0) {
+                vishankManager.setRingerMode(2);
                 vishankManager.setRingerMode(0);
                 vishankManager.setRingerMode(0);
             }

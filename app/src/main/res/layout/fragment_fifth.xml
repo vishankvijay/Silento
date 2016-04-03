@@ -6,7 +6,7 @@
     android:background="#A5D6A7"
     >
 
-
+    <!--C8E6C9-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -9,7 +9,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.widget.Toast;
 
 /**
@@ -218,23 +220,71 @@ public class shakeService2 extends Service implements SensorEventListener {
         if(profileType.equals("Silent"))
         {
 
-            if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE )
+            Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
+            if (am.getRingerMode() == 1 )
             {
                 am.setRingerMode(0);
                 am.setRingerMode(0);
             }
             else if(am.getRingerMode() == 0)
             {
+
+                int count1 = 0;
+                try
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                        if( Settings.Global.getInt(getContentResolver(), "zen_mode") == 2)
+                            ++count1;
+
+
+                    }
+                }
+                catch (Settings.SettingNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                if(count1==0)
                 am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                else
+                {
+                    am.setRingerMode(2);
+                    am.setRingerMode(0);
+                    am.setRingerMode(0);
+                }
+
             }
             else
             {
-                am.setRingerMode(0);
-                am.setRingerMode(0);
+
+                int count = 0;
+                try
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                        if( Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
+                            ++count;
+
+
+                    }
+                }
+                catch (Settings.SettingNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                if(count == 0) {
+                    am.setRingerMode(2);
+                    am.setRingerMode(0);
+                    am.setRingerMode(0);
+                }
+                else
+                {
+                    am.setRingerMode(2);
+                }
             }
         }
         else
         {
+
+            Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
             if (am.getRingerMode() == 0 )
             {
                 am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);

@@ -2,25 +2,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90CAF9"
+    android:background="#fff"
     tools:context="com.example.silento.SecondFragment">
 
 
-   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="20dp"
-    android:padding="20dp"
-    android:textStyle="bold|italic"
-    android:gravity="center"
-    android:text="Your search for an app that can save you from the embarrasement is now over."/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Your search for an app that can save you from the embarrasement is now over."
+        android:textColor="#424242"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/intro_second"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:src="@drawable/intro_second" />
 
 
 </FrameLayout>

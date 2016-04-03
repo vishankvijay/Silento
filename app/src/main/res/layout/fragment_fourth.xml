@@ -2,18 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.silento.FourthFragment"
-    android:background="#90CAF9">
+    android:background="#fff"
+    tools:context="com.example.silento.FourthFragment">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="75dp"
         android:textSize="20dp"
         android:padding="30dp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:gravity="center"
+        android:textColor="#424242"
         android:text="You can also add exceptions for important callers and never miss a call from your loved ones."/>
 
 

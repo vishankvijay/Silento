@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:sw_trackCap="round"
+        android:checked="true"
         app:sw_trackSize="10dp"
         android:layout_margin="10dp"
         app:sw_thumbColor="#D56E83"

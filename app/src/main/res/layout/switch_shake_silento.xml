@@ -16,6 +16,7 @@
         app:sw_trackSize="10dp"
         android:layout_margin="10dp"
         app:sw_thumbColor="#D56E83"
+        android:checked="true"
         android:layout_centerVertical="true"
 
         />

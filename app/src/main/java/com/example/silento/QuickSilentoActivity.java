@@ -42,10 +42,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
 
-import co.mobiwise.materialintro.animation.MaterialIntroListener;
-import co.mobiwise.materialintro.shape.Focus;
-import co.mobiwise.materialintro.shape.FocusGravity;
-import co.mobiwise.materialintro.view.MaterialIntroView;
+
 
 public class QuickSilentoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     Toolbar toolbar;
@@ -70,7 +67,6 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_silento);
         instantiate();
-        showTutorial();
 
         /*AudioManager audioManager = (AudioManager) getSystemService(this.AUDIO_SERVICE);
         Toast.makeText(QuickSilentoActivity.this, "initial " + audioManager.getRingerMode(), Toast.LENGTH_SHORT).show();*/
@@ -134,38 +130,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
     }
 
-    private void showTutorial() {
-        new MaterialIntroView.Builder(this)
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.MINIMUM)
-                .setDelayMillis(500)
-                .enableFadeAnimation(true)
-                .performClick(false)
-                .setInfoText("Hi There! Click this card and see what happens.")
-                .setTarget(setTimeButton)
-                .setListener(new MaterialIntroListener() {
-                    @Override
-                    public void onUserClicked(String s) {
 
-                        Toast.makeText(QuickSilentoActivity.this, "Working", Toast.LENGTH_SHORT).show();
-                        new MaterialIntroView.Builder(QuickSilentoActivity.this)
-                                .enableDotAnimation(true)
-                                .setFocusGravity(FocusGravity.CENTER)
-                                .setFocusType(Focus.MINIMUM)
-                                .setDelayMillis(500)
-                                .enableFadeAnimation(true)
-                                .performClick(true)
-                                .setInfoText("Hi There! Click this card and see what happens.")
-                                .setTarget(setTimeButton)
-                                .setUsageId("2") //THIS SHOULD BE UNIQUE ID
-                                .show();
-                    }
-                })
-                .setUsageId("intro_card") //THIS SHOULD BE UNIQUE ID
-                .show();
-
-    }
 
 
     public void instantiate() {
@@ -358,8 +323,10 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                                 try
                                 {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                        if(Settings.Global.getInt(getContentResolver(), "zen_mode") == 2 || Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
+                                        if( Settings.Global.getInt(getContentResolver(), "zen_mode") == 1)
                                         ++count;
+
+
                                     }
                                 }
                                 catch (Settings.SettingNotFoundException e) {
@@ -367,6 +334,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                                 }
 
                                 if(count == 0) {
+                                    audioManager.setRingerMode(2);
                                     audioManager.setRingerMode(0);
                                     audioManager.setRingerMode(0);
                                 }

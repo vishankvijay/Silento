@@ -370,6 +370,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
         }
 
         if (count == 0) {
+            silent_manager.setRingerMode(2);
             silent_manager.setRingerMode(0);
             silent_manager.setRingerMode(0);
         }
