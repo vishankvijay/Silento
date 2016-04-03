@@ -144,7 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Events section will manage all of your daily schedule.\nBut what if something unscheduled comes up like meetings and movies??\n\nDon't worry we got you.\nYou can use the Quick Silento feature to silent/vibrate your device for whatever else might come up.\n\nJust set the time range and select the profile type you want for that time range and we will quickly manage your profile."
+                    android:text="Events section will manage all of your daily schedule.\nBut what if something unscheduled comes up like meetings and movies??\n\nDon't worry we got you!\nYou can use the Quick Silento feature to silent/vibrate your device for whatever else might come up.\n\nJust set the time range and select the profile type you want for that time range and we will quickly manage your profile."
                     android:textSize="15sp" />
 
             </LinearLayout>

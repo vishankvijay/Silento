@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_shake_silento_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.silento.shakeSilentoActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
+<!--
                 <LinearLayout
                     android:id="@+id/switch_layout"
                     android:layout_width="match_parent"
@@ -79,29 +84,30 @@
                         app:sw_trackCap="round"
                         app:sw_trackSize="1dp" />
 
-                </LinearLayout>
+                </LinearLayout>-->
 
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/cardview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/switch_layout"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-
                     android:foreground="?android:attr/selectableItemBackground"
                     card_view:cardBackgroundColor="#fff"
                     card_view:cardCornerRadius="2dp"
-                    card_view:cardElevation="8dp">
+                    card_view:cardElevation="4dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -156,20 +162,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_height="0dp"
                 android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:paddingTop="10dp">
+                android:layout_weight="1"
+                android:layout_margin="16dp">
 
                 <TextView
                     android:id="@+id/what_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="What profile do you want when you shake it ?"
                     android:textColor="#000"
                     android:textSize="15dp" />
@@ -178,9 +179,6 @@
                     android:id="@+id/shake_silento_radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/what_profile"
                     android:orientation="vertical">
 
                     <RadioButton
@@ -209,5 +207,7 @@
         </LinearLayout>
 
     </ScrollView>
-</RelativeLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
 

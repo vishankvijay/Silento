@@ -10,7 +10,10 @@ import android.net.Uri;
 
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,10 +29,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rey.material.widget.Switch;
+
 import java.util.Objects;
 
 
-public class ExceptionActiviy extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ExceptionActiviy extends AppCompatActivity implements AdapterView.OnItemClickListener, Switch.OnCheckedChangeListener {
 
     ListView exceptionListView;
     private FloatingActionButton addExceptionfab;
@@ -45,6 +50,11 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
     com.melnykov.fab.FloatingActionButton fab ;
 
+    Switch exceptionEnablSwitch;
+
+    CoordinatorLayout coordinatorLayout;
+    Boolean enableValue = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,6 +66,8 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Exceptions");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
 
         exceptionListView = (ListView) findViewById(R.id.exception_listView);
         exceptionListView.setOnItemClickListener(this);
@@ -196,6 +208,18 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exception_activiy, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_exception_switch);
+        View view = MenuItemCompat.getActionView(menuItem);
+        exceptionEnablSwitch = (Switch) view.findViewById(R.id.exceptions_custom_switch);
+        exceptionEnablSwitch.setOnCheckedChangeListener(this);
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyExceptionProfile", MODE_PRIVATE);
+
+        enableValue = sharedPreferences.getBoolean("exception_enable", false);
+        exceptionEnablSwitch.setChecked(enableValue);
+
         return true;
     }
 
@@ -294,4 +318,34 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
         //Toast.makeText(ExceptionActiviy.this, ""+ count_animation, Toast.LENGTH_SHORT).show();
         //Toast.makeText(FirstActivity.this, "onPause Called " + count, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onCheckedChanged(Switch view, boolean checked)
+    {
+        SharedPreferences sharedPreferences_quick = getSharedPreferences("MyExceptionProfile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences_quick.edit();
+        editor.putBoolean("exception_enable" , checked);
+        editor.apply();
+
+        if(checked)
+            showSnackbar("Exceptions is ON!");
+        else
+            showSnackbar("Exceptions is OFF!");
+
+    }
+
+
+    private void showSnackbar(String message)
+    {
+        Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(R.color.mdtp_accent_color ))
+                .show();
+    }
+
 }

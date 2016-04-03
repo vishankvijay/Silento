@@ -137,7 +137,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                 if (!s.toString().equals("") && count_layout_containing_buttons == 0) {
                     TranslateAnimation animate = new TranslateAnimation(0, 0, 3 * carview_with_buttons.getHeight(), 0);
                     animate.setDuration(400);
-                    animate.setFillAfter(true);
+                    animate.setFillAfter(false);
                     carview_with_buttons.startAnimation(animate);
                     carview_with_buttons.setVisibility(View.VISIBLE);
                     count_layout_containing_buttons++;
@@ -369,6 +369,10 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                     .setListener(new IShowcaseListener() {
                         @Override
                         public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyData" , MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("show_alarm_tutorial", false);
+                            editor.apply();
 
                         }
 
@@ -462,10 +466,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
         carview_with_buttons.setVisibility(View.INVISIBLE);
         carview_with_profile_types.setVisibility(View.INVISIBLE);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyData" , MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("show_alarm_tutorial", false);
-        editor.apply();
+
 
     }
 
@@ -745,7 +746,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
         TranslateAnimation animate = new TranslateAnimation(0, 0, carview_with_profile_types.getWidth(), 0);
         animate.setDuration(400);
-        animate.setFillAfter(true);
+        animate.setFillAfter(false);
         carview_with_profile_types.startAnimation(animate);
         carview_with_profile_types.setVisibility(View.VISIBLE);
     }
