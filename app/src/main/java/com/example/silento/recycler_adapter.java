@@ -169,7 +169,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
                // Toast.makeText(context, "Delete " + position  , Toast.LENGTH_SHORT).show();
 
 
-                String alarmTitle_delete = arrayList.get(position).getProfileName();
+                final String alarmTitle_delete = arrayList.get(position).getProfileName();
 
 
               /*  dataBaseManipulator = new DataBaseManipulator(context);
@@ -212,7 +212,9 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position, arrayList.size());
-                        ((AlarmList) context).setEmptyView(arrayList.size());
+                        ((AlarmList) context).showSnackbar(alarmTitle_delete+ " has been removed from your Event List.");
+
+
                         //customListAdapter.remove(profile);
                         //Toast.makeText(AlarmList.this, "Event "+alarmTitle_delete+" deleted", Toast.LENGTH_SHORT).show();
                         //initializeListView();

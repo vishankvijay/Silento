@@ -38,11 +38,21 @@ public class upcomingFeaturesActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if(id == android.R.id.home)
+            onBackPressed();
+
         //noinspection SimplifiableIfStatement
-       /* if (id == R.id.action_settings) {
-            return true;
-        }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        // startActivity(new Intent(AlarmDetails.this, AlarmList.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_right, 0);
+
     }
 }

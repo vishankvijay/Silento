@@ -123,7 +123,7 @@ public class AlarmList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AlarmList.this, AlarmDetails.class);
-                startActivity(intent);
+                startActivityForResult(intent , 1);
                 overridePendingTransition(R.anim.slide_in_left, 0);
             }
         });
@@ -131,6 +131,30 @@ public class AlarmList extends AppCompatActivity {
        /* task = new GetProfileTask(this);
         task.execute((Void) null);*/
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data!=null)
+        showSnackbar(data.getStringExtra("name")+" has been added to you Events List.");
+
+
+    }
+
+
+    public void showSnackbar(String message)
+    {
+        Snackbar.make(alarmList_coordinator, message, Snackbar.LENGTH_LONG)
+                .setAction("Ok", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setActionTextColor(getResources().getColor(R.color.mdtp_accent_color))
+                .show();
     }
 
     @Override

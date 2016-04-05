@@ -53,8 +53,8 @@ public class AppIntroActivity extends AppIntro2 {
         setVibrateIntensity(30);
 
 
-        setFadeAnimation(); // OR
-        //setZoomAnimation(); // OR
+        //setFadeAnimation(); // OR
+        setZoomAnimation(); // OR
         //setFlowAnimation(); // OR
         //setSlideOverAnimation(); // OR
         //setDepthAnimation();

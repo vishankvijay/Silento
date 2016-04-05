@@ -61,4 +61,14 @@ public class aboutActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        // startActivity(new Intent(AlarmDetails.this, AlarmList.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_right, 0);
+
+    }
 }

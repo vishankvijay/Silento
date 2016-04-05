@@ -615,7 +615,12 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                 serviceIntent.setAction("setAlarm");
 
                                 startService(serviceIntent);
-                                onBackPressed();
+                                //onBackPressed();
+
+                                Intent intent = new Intent();
+                                intent.putExtra("name" , profileNameEditText.getText().toString());
+                                setResult(1 ,intent);
+                                finish();
 
 
                             }
@@ -672,7 +677,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
     private void showSnackbar(String message)
     {
         Snackbar.make(activity_alarm_details_layout, message, Snackbar.LENGTH_LONG)
-                .setAction("CLOSE", new View.OnClickListener() {
+                .setAction("Ok", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 

@@ -61,6 +61,9 @@ public class feedBackActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        if(id == android.R.id.home)
+            onBackPressed();
+
         if (id == R.id.action_send) {
 
             String sub = title.getText().toString();
@@ -93,6 +96,19 @@ public class feedBackActivity extends AppCompatActivity {
 
         }
 
+
+
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        // startActivity(new Intent(AlarmDetails.this, AlarmList.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_right, 0);
+
     }
 }

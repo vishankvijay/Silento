@@ -12,15 +12,17 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
  * Created by 1305166 on 30-09-2015.
  */
-public class shakeService2 extends Service implements SensorEventListener {
+public class shakeService2 extends Service implements SensorEventListener
+{
 
 
-    String profileType = null;
+    private static String profileType ;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
 
@@ -52,18 +54,47 @@ public class shakeService2 extends Service implements SensorEventListener {
     // Counter for shake movements
     int moveCount = 0;
 
+    public shakeService2()
+    {}
+
+    public shakeService2(shakeSilentoActivity context)
+    {
+       //Toast.makeText(shakeService2.this, "construtor called", Toast.LENGTH_SHORT).show();
+
+        //Log.d("subha" , "construtor " + MIN_SHAKE_ACCELERATION + " " + profileType);
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyData", context.MODE_PRIVATE);
+
+        int  seekBarValue = sharedPreferences.getInt("seekBarValue", 2);
+        profileType = sharedPreferences.getString("profileType", null);
+        //profileType = sharedPreferences.getString("profileType", null);
+
+        if(seekBarValue == 0 || seekBarValue == 1)
+            MIN_SHAKE_ACCELERATION = 2;
+        else
+            MIN_SHAKE_ACCELERATION = seekBarValue;
+
+       // Log.d("subha" , "construtor " + MIN_SHAKE_ACCELERATION + " " + profileType);
+    }
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
+       // Toast.makeText(shakeService2.this, "Vishank called", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
+        //Toast.makeText(shakeService2.this, "Vishank bind called", Toast.LENGTH_SHORT).show();
         return null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        //Toast.makeText(shakeService2.this, "Vishank  command called", Toast.LENGTH_SHORT).show();
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyData" , MODE_PRIVATE);
 
@@ -76,6 +107,8 @@ public class shakeService2 extends Service implements SensorEventListener {
         MIN_SHAKE_ACCELERATION = seekBarValue;
 
 
+
+
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
@@ -83,6 +116,8 @@ public class shakeService2 extends Service implements SensorEventListener {
 
         return START_STICKY;
     }
+
+
 
     @Override
     public void onStart(Intent intent, int startId)
@@ -212,7 +247,9 @@ public class shakeService2 extends Service implements SensorEventListener {
 
     public void onShake()
     {
-        Toast.makeText(shakeService2.this , "Profile Changed", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(shakeService2.this , "Profile Changed " + MIN_SHAKE_ACCELERATION + profileType, Toast.LENGTH_SHORT).show();
+        Toast.makeText(shakeService2.this , "Profile Changed " , Toast.LENGTH_SHORT).show();
+
 
         AudioManager am = (AudioManager) getSystemService(shakeService2.this.AUDIO_SERVICE);
 
@@ -220,7 +257,7 @@ public class shakeService2 extends Service implements SensorEventListener {
         if(profileType.equals("Silent"))
         {
 
-            Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
             if (am.getRingerMode() == 1 )
             {
                 am.setRingerMode(0);
@@ -284,7 +321,7 @@ public class shakeService2 extends Service implements SensorEventListener {
         else
         {
 
-            Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(shakeService2.this, ""+am.getRingerMode(), Toast.LENGTH_SHORT).show();
             if (am.getRingerMode() == 0 )
             {
                 am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
@@ -305,6 +342,10 @@ public class shakeService2 extends Service implements SensorEventListener {
         super.onDestroy();
 
         mSensorManager.unregisterListener(this);
+
+      //  Toast.makeText(shakeService2.this, "onDestroy called", Toast.LENGTH_SHORT).show();
+
+      //  new shakeService2();
 
     }
 }

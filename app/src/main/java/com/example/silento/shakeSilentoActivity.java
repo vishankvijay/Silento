@@ -261,9 +261,11 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         editor.putInt("seekBarValue", sensivity_slider.getValue());
         editor.apply();
 
-        Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
+        new shakeService2(shakeSilentoActivity.this);
+
+        /*Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
         shakeServiceIntent2.setAction("register");
-        startService(shakeServiceIntent2);
+        startService(shakeServiceIntent2);*/
 
 
     }
@@ -284,9 +286,11 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         editor.putString("profileType", profile_type);
         editor.apply();
 
-        Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
+        new shakeService2(shakeSilentoActivity.this);
+
+        /*Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
         shakeServiceIntent2.setAction("register");
-        startService(shakeServiceIntent2);
+        startService(shakeServiceIntent2);*/
 
     }
 

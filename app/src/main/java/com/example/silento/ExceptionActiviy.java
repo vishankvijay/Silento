@@ -132,6 +132,7 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
 
 
+
                     String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
 
                     String hasPhone = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
@@ -171,6 +172,7 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
 
                 dataBaseManipulator = new DataBaseManipulator(this);
                 dataBaseManipulator.saveException(saveIntent);
+                showSnackbar(exceptionName + " has been added to your Exception List.");
                 initializeListView();
 
 
@@ -273,6 +275,7 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
                 dataBaseManipulator.deleteException(exceptionId_delete);
                 dataBaseManipulator.close();
 
+                showSnackbar(exceptionName + " has been removed from your Exception List.");
                 initializeListView();
 
             }

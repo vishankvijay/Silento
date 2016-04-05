@@ -2,26 +2,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.silento.FifthFragment"
     android:background="#A5D6A7"
-    >
+    tools:context="com.example.silento.FifthFragment">
 
-    <!--C8E6C9-->
-    <TextView
-        android:layout_width="match_parent"
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ultimately you are\n the Hero!"
-        android:textSize="30sp"
-        android:padding="50dp"
-        android:textStyle="bold|italic"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:orientation="vertical">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/intro_fifth"
-        android:layout_gravity="center" />
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/carview_with_profile_types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carview_with_buttons"
+            android:layout_gravity="center|top"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="45dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="visible"
+            card_view:cardBackgroundColor="#81C784"
+            card_view:cardCornerRadius="5dp">
+
+            <!--C8E6C9-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Ultimately you are\n the Hero!"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carview_with_profile_types"
+            android:scaleType="fitStart"
+            android:src="@drawable/intro_fifth" />
+
+
+    </RelativeLayout>
 
 
 
