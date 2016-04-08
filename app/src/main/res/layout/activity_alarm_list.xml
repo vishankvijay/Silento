@@ -25,6 +25,18 @@
             android:layout_below="@id/toolbar"
             android:background="@drawable/shadow" />
 
+
+        <TextView
+            android:id="@+id/text_hi"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_below="@id/divider_alarmlist"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"/>
+
+
         <!--    <ListView
                 android:scrollbars="none"
                 android:layout_width="wrap_content"
@@ -41,13 +53,15 @@
         <FrameLayout
             android:id="@+id/layout_with_color"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/divider_alarmlist">
+
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/alarm_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layoutAnimation="@anim/listview_animation" />
 
@@ -64,6 +78,15 @@
 
         </FrameLayout>
 
+     <!--   <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/emptya"
+            android:layout_above="@+id/emptyTextView"
+            android:layout_centerHorizontal="true"
+
+            />-->
+
 
         <TextView
             android:id="@+id/emptyTextView"
@@ -75,6 +98,9 @@
             android:text="Your event list is empty for now,\n Click on  +  to add new Event.."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
             android:visibility="visible" />
 
     </RelativeLayout>

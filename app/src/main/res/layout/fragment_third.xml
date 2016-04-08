@@ -5,7 +5,65 @@
     android:background="#B0BEC5"
     tools:context="com.example.silento.ThirdFragment">
 
-    <TextView
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/carview_with_profile_types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carview_with_buttons"
+            android:layout_gravity="center|top"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="25dp"
+            card_view:cardBackgroundColor="#90A4AE"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="visible"
+            card_view:cardCornerRadius="5dp">
+
+
+
+            <!--C8E6C9-->
+
+
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Silento automatically silences your phone based on your everyday schedule through a simple and friendly interface."
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:id="@+id/img_frag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carview_with_profile_types"
+            android:scaleType="fitCenter"
+            android:src="@drawable/intro_exceptions" />
+
+
+    </RelativeLayout>
+
+ <!--   <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -13,14 +71,15 @@
         android:text="Silento automatically silences your phone based on your weekly schedule through a simple and friendly interface."
         android:textColor="#fff"
         android:textSize="20dp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold" />-->
+<!--
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:src="@drawable/intro_third" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/intro_third" />-->
 
 
 </FrameLayout>

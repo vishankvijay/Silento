@@ -35,7 +35,7 @@ public class NotificationListenerService extends android.service.notification.No
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 requestInterruptionFilter(INTERRUPTION_FILTER_PRIORITY);
 
-                Toast.makeText(NotificationListenerService.this, "Called", Toast.LENGTH_LONG).show();
+               // Toast.makeText(NotificationListenerService.this, "Called", Toast.LENGTH_LONG).show();
             }
             else{
                 AudioManager am = (AudioManager) getBaseContext().getSystemService(AUDIO_SERVICE);

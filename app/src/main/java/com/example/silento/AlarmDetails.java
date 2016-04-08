@@ -353,13 +353,16 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
         if(show) {
 
+            activity_alarm_details_layout.setFocusable(true);
+            activity_alarm_details_layout.setFocusableInTouchMode(true);
+
             carview_with_buttons.setVisibility(View.VISIBLE);
             carview_with_profile_types.setVisibility(View.VISIBLE);
 
             new MaterialShowcaseView.Builder(this)
                     .setTarget(startTimeButton)
                     .setDismissText("OK")
-                    .setContentText("Use this to set the START TIME of your event.")
+                    .setContentText("Use this to set the Start Time of your event.")
                     .setDelay(100) // optional but starting animations immediately in onCreate can make them choppy
                     .singleUse("1")// provide a unique ID used to ensure it is only shown once
                     .setListener(new IShowcaseListener() {
@@ -376,9 +379,9 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                         public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
 
                             new MaterialShowcaseView.Builder(AlarmDetails.this)
-                                    .setTarget(endTimeButton)
-                                    .setDismissText("OK")
-                                    .setContentText("Use this to set the END TIME of your event.")
+                                    .setTarget(daysEnabledTextview)// .setTarget(endTimeButton)
+                                    .setDismissText("OK")//.setContentText("Use this to set the End Time of your event.")
+                                    .setContentText("Use this to set the Enabled Days of your event.")
                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                     .singleUse("2") // provide a unique ID used to ensure it is only shown once
                                     .setListener(new IShowcaseListener() {
@@ -392,9 +395,10 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
 
                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
-                                                    .setTarget(daysEnabledTextview)
-                                                    .setDismissText("OK")
-                                                    .setContentText("Use this to set the Enabled Days of your event.")
+                                                    //.setTarget(daysEnabledTextview)
+                                                    .setTarget(start_profileTypeTextview)
+                                                    .setDismissText("Cool! Lets Start")
+                                                    .setContentText("Use this to set the Profile Mode you want on the START of your event")
                                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                     .singleUse("3") // provide a unique ID used to ensure it is only shown once
                                                     .setListener(new IShowcaseListener() {
@@ -406,10 +410,13 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                         @Override
                                                         public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView)
                                                         {
-                                                            new MaterialShowcaseView.Builder(AlarmDetails.this)
+
+                                                            make_view_invisible();
+
+                                                            /*new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                                     .setTarget(start_profileTypeTextview)
+                                                                    .setContentText("Use this to set the Profile Mode you want on the START of your event")
                                                                     .setDismissText("OK")
-                                                                    .setContentText("Use this to set the PROFILE you want on the START of your EVENT")
                                                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                     .singleUse("4") // provide a unique ID used to ensure it is only shown once
                                                                     .setListener(new IShowcaseListener() {
@@ -423,7 +430,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                                             new MaterialShowcaseView.Builder(AlarmDetails.this)
                                                                                     .setTarget(end_profileTypeTextview)
                                                                                     .setDismissText("Cool! Lets Start")
-                                                                                    .setContentText("Use this to set the PROFILE you want on the END of your EVENT")
+                                                                                    .setContentText("Use this to set the Profile Mode you want on the END of your Event")
                                                                                             //.setDelay(0) // optional but starting animations immediately in onCreate can make them choppy
                                                                                     .singleUse("5") // provide a unique ID used to ensure it is only shown once
                                                                                     .setListener(new IShowcaseListener() {
@@ -440,7 +447,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                                                                     .show();
                                                                         }
                                                                     })
-                                                                    .show();
+                                                                    .show();*/
                                                         }
                                                     })
                                                     .show();
@@ -586,7 +593,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                                 {
                                     // if (toastCount == 1)
                                     // Snackbar.make(activity_alarm_details_layout, "Select End Profile Type.", Snackbar.LENGTH_SHORT).show();
-                                    showSnackbar("Select End Profile Type.");
+                                    showSnackbar("Select End Profile mode.");
 
                                     //Toast.makeText(AlarmDetails.this, "Select End  Profile Type", Toast.LENGTH_SHORT).show();
                                 }
@@ -595,7 +602,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
                             } else {
                                 // if (toastCount == 1)
 
-                                showSnackbar("Select Start Profile Type.");
+                                showSnackbar("Select Start Profile mode.");
                                 // Snackbar.make(activity_alarm_details_layout, "Select Start Profile Type.", Snackbar.LENGTH_SHORT).show();
 
                                 //Toast.makeText(AlarmDetails.this, "Select Start  Profile Type", Toast.LENGTH_SHORT).show();
@@ -619,7 +626,7 @@ public class AlarmDetails extends AppCompatActivity implements TimePickerDialog.
 
                                 Intent intent = new Intent();
                                 intent.putExtra("name" , profileNameEditText.getText().toString());
-                                setResult(1 ,intent);
+                                setResult(Activity.RESULT_OK ,intent);
                                 finish();
 
 

@@ -56,7 +56,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
                 } else
                     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 
-                showNotification(context);
+                showNotification(context, "Silento!", "Silento! has successfully changed your profile.\nClick here to manage your events.");
 
 /*
             Intent notifIntent = new Intent(context, AlarmList.class);
@@ -85,6 +85,10 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
             Notification n = builder.build();
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(0, n);*/
+            }
+            else
+            {
+                showNotification(context , "Profile change Postponed" , "Profile change Postponed as Quick Silento! is active.\nProfiles will be restored according to your Event List once Quick Silento! is done with it's work.");
             }
 
 
@@ -147,7 +151,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
                         if (((startTime > temp_start_time) || temp_start_time == 0) && (startTime < current_time) && (EndTime > current_time)) {
                             temp_start_time = (int) startTime;
                             profileType_2 = alarms_start.getString(7);
-                            Toast.makeText(context, "1 inside", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(context, "1 inside", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -185,7 +189,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
                     //   Toast.makeText(context, "2 " + profileType_2, Toast.LENGTH_SHORT).show();
 
-                    showNotification(context);
+                    showNotification(context, "Silento!", "Silento! has successfully changed your profile.\nClick here to manage your events.");
 
                 }
 
@@ -236,6 +240,11 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
 */
             }
+            else
+            {
+                showNotification(context , "Profile change Postponed" , "Profile change Postponed as Quick Silento! is active.\nProfiles will be restored according to your Event List once Quick Silento! is done with it's work.");
+
+            }
 
 
             // Toast.makeText(context, "" + quick_silento_active_state_1, Toast.LENGTH_SHORT).show();
@@ -285,13 +294,13 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
                     long startTime = (60 * startMinute_int) + (3600 * startHour_int);
                     long EndTime = (60 * EndMinute_int) + (3600 * EndHour_int);
-                    Toast.makeText(context, "Inside " + current_hour, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Inside " + current_hour, Toast.LENGTH_SHORT).show();
 
                     if (((startTime > temp_start_time) || temp_start_time == 0) && (startTime < current_time) && (EndTime > current_time)) {
                         temp_start_time = (int) startTime;
                         profileType_2 = alarms_start.getString(7);
 
-                        Toast.makeText(context, "Real Inside", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(context, "Real Inside", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -302,19 +311,19 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
                     }*/
                     alarms_start.moveToNext();
                 }
-                Toast.makeText(context, "called " + profileType_2, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, "called " + profileType_2, Toast.LENGTH_SHORT).show();
 
                 AudioManager am = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
 
                 if (profileType_2.equals("Silent")) {
                     makeItSilent(context);
-                    Toast.makeText(context, "called 0", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "called 0", Toast.LENGTH_SHORT).show();
                 } else if (profileType_2.equals("Vibration")) {
                     am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-                    Toast.makeText(context, "called 1", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "called 1", Toast.LENGTH_SHORT).show();
                 } else if (profileType_2.equals("Normal")) {
                     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-                    Toast.makeText(context, "called normal", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "called normal", Toast.LENGTH_SHORT).show();
                 } else {
 
                     SharedPreferences sharedPreferences_quick_2 = context.getSharedPreferences("QuickData", Context.MODE_PRIVATE);
@@ -323,17 +332,17 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
                     switch (quick_silento_profile_if_not_conflicting) {
                         case 0:
                             makeItSilent(context);
-                            Toast.makeText(context, "called  non con 0", Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(context, "called  non con 0", Toast.LENGTH_SHORT).show();
                             break;
 
                         case 1:
                             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-                            Toast.makeText(context, "called  non con 1", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "called  non con 1", Toast.LENGTH_SHORT).show();
                             break;
 
                         case 2:
                             am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-                            Toast.makeText(context, "called  non con 2", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "called  non con 2", Toast.LENGTH_SHORT).show();
                             break;
                     }
 
@@ -349,7 +358,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
             editor_quick.putBoolean("quick_silento_active_state", false);
             editor_quick.commit();
 
-            showNotification(context);
+            showNotification(context, "Silento!", "Silento! has successfully changed your profile.\nClick here to manage your events.");
 
 
         }
@@ -377,7 +386,7 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
 
     }
 
-    private void showNotification(Context context) {
+    private void showNotification(Context context, String title, String message) {
         SharedPreferences sharedPreferences_quick_1 = context.getSharedPreferences("QuickData", Context.MODE_PRIVATE);
         Boolean get_notification_state = sharedPreferences_quick_1.getBoolean("get_notification_state", true);
 
@@ -389,11 +398,66 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
             bigText.bigText("Silento! has successfully changed your profile.click here to manage your profiles.");
             bigText.setBigContentTitle("Silento!");*/
 
+        /*    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                final Notification.Builder builder = new Notification.Builder(context);
+
+                builder.setStyle(new Notification.BigTextStyle(builder)
+                        .bigText(message)
+                        .setBigContentTitle(title));
+
+                builder.setAutoCancel(true);
+
+                builder.setSmallIcon(R.mipmap.ic_silento_logo);
+                builder.setContentIntent(pendingNotifyIntent);
+
+                Notification n = builder.build();
+                NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(0, n);
+            }
+            else
+            {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+                builder.setContentTitle(title);
+                builder.setContentText(message);
+                builder.setAutoCancel(true);
+
+                builder.setSmallIcon(R.mipmap.ic_silento_logo);
+                builder.setContentIntent(pendingNotifyIntent);
+
+                Notification n = builder.build();
+                NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(0, n);
+            }*/
+
+
+            NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle();
+            style.setBigContentTitle(title);
+            style.bigText(message);
+
+
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+            builder.setContentTitle(title);
+            builder.setContentText(message);
             builder.setAutoCancel(true);
-            builder.setContentTitle("Silento!");
-            builder.setContentText("Silento! has successfully changed your profile.\nclick here to manage your profiles.");
+            builder.setTicker("Silento! Profile Changed.");
             builder.setSmallIcon(R.mipmap.ic_silento_logo);
+            builder.setContentIntent(pendingNotifyIntent);
+
+            builder.setStyle(style);
+
+            Notification n = builder.build();
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, n);
+
+
+
+
+            // NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+
+
+           /* builder.setAutoCancel(true);
+
+            builder.setSmallIcon(R.mipmap.ic_silento_logo);*/
             //  builder.setStyle(bigText);
 
 
@@ -403,11 +467,11 @@ public class MyAlarmBroadcast extends BroadcastReceiver {
             stackBuilder.addParentStack(AlarmList.class);
             stackBuilder.addNextIntent(notifIntent);*/
 
-            builder.setContentIntent(pendingNotifyIntent);
+          //  builder.setContentIntent(pendingNotifyIntent);
 
-            Notification n = builder.build();
+            /*Notification n = builder.build();
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(0, n);
+            notificationManager.notify(0, n);*/
         }
     }
 }

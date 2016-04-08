@@ -72,7 +72,8 @@ public class MyAlarm extends Service {
 
     }
 
-    public void bootSetAlarm() {
+    public void bootSetAlarm()
+    {
         long nxt_time_start = getnextAlarmTime_start();
 
         Intent intent_start1 = new Intent(MyAlarm.this, MyAlarmBroadcast.class);
@@ -81,6 +82,7 @@ public class MyAlarm extends Service {
         PendingIntent pendingAlarms_start = PendingIntent.getBroadcast(this, 0, intent_start1, PendingIntent.FLAG_CANCEL_CURRENT);
         if (nxt_time_start > 0)
             pushAlarm_start(nxt_time_start, pendingAlarms_start);
+
 
 
         long nxt_time_end = getnextAlarmTime_end();
@@ -92,7 +94,6 @@ public class MyAlarm extends Service {
             pushAlarm_end(nxt_time_end, pendingAlarms_end);
 
         stopSelf();
-
 
     }
 

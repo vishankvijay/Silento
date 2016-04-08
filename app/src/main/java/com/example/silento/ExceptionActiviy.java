@@ -253,7 +253,7 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Wait!!");
 
-        builder.setMessage("Delete  " + exceptionName + " ?");
+        builder.setMessage("Remove '" + exceptionName + "' from Exception list?");
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
@@ -265,7 +265,7 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yeah", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -333,9 +333,9 @@ public class ExceptionActiviy extends AppCompatActivity implements AdapterView.O
         editor.apply();
 
         if(checked)
-            showSnackbar("Exceptions is ON!");
+            showSnackbar("Exceptions is enabled.");
         else
-            showSnackbar("Exceptions is OFF!");
+            showSnackbar("Exceptions is disabled. To enable it click on the upper right switch.");
 
     }
 

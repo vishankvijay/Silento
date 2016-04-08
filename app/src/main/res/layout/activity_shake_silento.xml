@@ -115,7 +115,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="Select shake sensivity of your device"
+                            android:text="  Select your desired shake sensivity  "
                             android:textColor="#000"
                             android:textStyle="normal"
                             android:textSize="15sp"/>
@@ -172,9 +172,10 @@
                     android:id="@+id/what_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="What profile do you want when you shake it ?"
+                    android:text="What profile mode do you want when you shake your device?"
                     android:textColor="#000"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:gravity="center"/>
 
                 <RadioGroup
                     android:id="@+id/shake_silento_radio_group"

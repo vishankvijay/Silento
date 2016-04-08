@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.silento">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -85,33 +84,46 @@
             android:label="@string/title_activity_alarm_details"
             android:parentActivityName=".AlarmDetails"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".updateAlarmActivity"
             android:label="@string/title_activity_update_alarm"
             android:parentActivityName=".updateAlarmActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".feedBackActivity"
             android:label="@string/title_activity_feed_back"
             android:parentActivityName=".feedBackActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".aboutActivity"
             android:label="@string/title_activity_about"
             android:parentActivityName=".aboutActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".upcomingFeaturesActivity"
             android:label="@string/title_activity_upcoming_features"
             android:parentActivityName=".upcomingFeaturesActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".ExceptionActiviy"
             android:label="@string/title_activity_exception_activiy"
             android:parentActivityName=".ExceptionActiviy"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".FirstActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -129,11 +141,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".SettingsActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".SettingsActivity"
+            />
+        <activity android:name=".AppIntroActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AppIntroActivity" />
+
         <activity android:name=".HelpActivity"
-            android:parentActivityName=".HelpActivity"/>
+            android:parentActivityName=".HelpActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

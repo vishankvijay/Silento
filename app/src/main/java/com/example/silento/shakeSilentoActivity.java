@@ -164,6 +164,7 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
         new MaterialShowcaseView.Builder(this)
                 .setTarget(shakeEnablSwitch)
                 .setDismissText("GOT IT")
+                .setDismissTextColor(0xffD56E83)
                 .setContentText("Use this to ENABLE or Disable your Event.")
                 .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
                 .singleUse("shake_1") // provide a unique ID used to ensure it is only shown once
@@ -212,7 +213,7 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
             editor.putInt("seekBarValue", sensivity_slider.getValue());
             editor.apply();
 
-            showSnackbar("Shake Silento is ON!");
+            showSnackbar("Shake Silento is enabled");
 
             Intent shakeServiceIntent2 = new Intent(shakeSilentoActivity.this, shakeService2.class);
             shakeServiceIntent2.setAction("register");
@@ -232,7 +233,7 @@ public class shakeSilentoActivity extends AppCompatActivity implements Switch.On
             // shakeServiceIntent.putExtra("seekBarValue", seek_bar_value);
             stopService(shakeServiceIntent2);
 
-            showSnackbar("Shake Silento is OFF!");
+            showSnackbar("Shake Silento is disabled. To enable it click on the upper right switch.");
 
 
         }

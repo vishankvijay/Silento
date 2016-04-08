@@ -8,48 +8,56 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/carview_with_profile_types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carview_with_buttons"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:visibility="visible"
-        card_view:cardBackgroundColor="#FF8A65"
-        card_view:cardCornerRadius="5dp"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        >
-
-        <!--C8E6C9-->
-        <TextView
-            android:layout_width="match_parent"
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/carview_fragment1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="6dp"
-            android:text="Do you often go through the embarrassment of having your phone ringing at the wrong times?"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_below="@id/carview_with_buttons"
+            android:layout_gravity="center|top"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="25dp"
+            card_view:cardBackgroundColor="#FF8A65"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="visible"
+            card_view:cardCornerRadius="5dp">
 
-    </android.support.v7.widget.CardView>
+
+
+            <!--C8E6C9-->
+
+
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Do you often go through the embarrassment of having your phone ringing at the wrong times?"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
 
 
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/intro_firsta"
-        android:scaleType="fitStart"
-        android:layout_below="@+id/carview_with_profile_types"/>
+
+        </android.support.v7.widget.CardView>
+
+
+        <!-- TODO: Update blank fragment layout -->
+        <ImageView
+            android:id="@+id/img_frag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carview_fragment1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/intro_firsta" />
 
 
     </RelativeLayout>

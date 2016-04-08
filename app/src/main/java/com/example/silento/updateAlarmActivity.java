@@ -103,7 +103,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
                 );
 
                 current = "start";
-                tpd.vibrate(true);
+                tpd.vibrate(false);
                 tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
                     @Override
@@ -129,7 +129,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
                 );
 
                 current = "end";
-                tpd2.vibrate(true);
+                tpd2.vibrate(false);
                 tpd2.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
@@ -185,7 +185,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
     {
         new MaterialShowcaseView.Builder(this)
                 .setTarget(enable_update_switch)
-                .setDismissText("GOT IT")
+                .setDismissText("OK")
                 .setContentText("Use this to ENABLE or Disable your Event.")
                 .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
                 .singleUse("update_1") // provide a unique ID used to ensure it is only shown once
@@ -367,7 +367,7 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
                             }
                             else
                             {
-                                Toast.makeText(updateAlarmActivity.this, "Select  Profile Type", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(updateAlarmActivity.this, "Select  Profile Type", Toast.LENGTH_SHORT).show();
                             }
                             if (start_selectedRadioUpdateButton != null && end_selectedRadioUpdateButton != null)
                             {
@@ -391,7 +391,12 @@ public class updateAlarmActivity extends AppCompatActivity implements TimePicker
 
                                 startService(serviceIntent);
                                 //finish();
-                                onBackPressed();
+                                //onBackPressed();
+
+                                Intent intent = new Intent();
+                                intent.putExtra("name" , profileNameUpdateEditText.getText().toString());
+                                setResult(Activity.RESULT_OK ,intent);
+                                finish();
 
 
                             }

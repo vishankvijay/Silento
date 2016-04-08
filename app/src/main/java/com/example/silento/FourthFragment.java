@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 
 /**
@@ -13,6 +16,7 @@ import android.view.ViewGroup;
  */
 public class FourthFragment extends Fragment {
 
+ //   ImageView img_frag4;
 
     public FourthFragment() {
         // Required empty public constructor
@@ -23,7 +27,17 @@ public class FourthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fourth, container, false);
+        View view = inflater.inflate(R.layout.fragment_fourth, container, false);
+
+        // carview_fragment1 = (CardView) view.findViewById(R.id.carview_fragment1);
+        /*img_frag4 = (ImageView) view.findViewById(R.id.img_frag4);
+
+        final Animation animRotate = AnimationUtils.loadAnimation(getActivity(), R.anim.scale);
+        img_frag4.startAnimation(animRotate);*/
+
+
+
+        return  view;
     }
 
 }

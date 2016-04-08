@@ -78,7 +78,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                 i = Settings.Global.getInt(getContentResolver(), "zen_mode");
             }
 
-            Toast.makeText(QuickSilentoActivity.this, "wow " + i, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(QuickSilentoActivity.this, "wow " + i, Toast.LENGTH_SHORT).show();
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
         }
@@ -160,7 +160,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
 
         setTimeButton.setText(text);
 
-        String first = "What profile do you want for the next ";
+        String first = "What profile mode do you want for the next ";
         String second = "<font color='#D56E83'>"+text+"</font>";
         String last = " ?";
 
@@ -339,7 +339,7 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
                                     audioManager.setRingerMode(0);
                                 }
 
-                                Toast.makeText(QuickSilentoActivity.this, "count" + count, Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(QuickSilentoActivity.this, "count" + count, Toast.LENGTH_SHORT).show();
 
 
 
@@ -467,11 +467,13 @@ public class QuickSilentoActivity extends AppCompatActivity implements TimePicke
             bigText.bigText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
             bigText.setBigContentTitle("Silento!");*/
             // bigText.setSummaryText("By: Vihank Vijay");
+            String hourString = calendar.get(Calendar.HOUR_OF_DAY) < 10 ? "0" + calendar.get(Calendar.HOUR_OF_DAY) : "" + calendar.get(Calendar.HOUR_OF_DAY);
+            String minuteString = calendar.get(Calendar.MINUTE) < 10 ? "0" + calendar.get(Calendar.MINUTE) : "" + calendar.get(Calendar.MINUTE);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(QuickSilentoActivity.this);
             builder.setAutoCancel(true);
             builder.setContentTitle("Silento! - Quick Silento");
-            builder.setContentText("Ends at " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
+            builder.setContentText("Ends at " + hourString + ":" + minuteString);
             builder.setSmallIcon(R.mipmap.ic_silento_logo);
 
 

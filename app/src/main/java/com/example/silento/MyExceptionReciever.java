@@ -53,7 +53,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
                 enableValue = sharedPreferences_check.getBoolean("exception_enable", false);
 
                 if (enableValue) {
-                    Toast.makeText(context, ""+enableValue, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, ""+enableValue, Toast.LENGTH_SHORT).show();
                     if (state.equalsIgnoreCase(TelephonyManager.EXTRA_STATE_RINGING)) {
 
 
@@ -91,7 +91,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
 
                 if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
 
-                    Toast.makeText(context, "count offkook " + count, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context, "count offkook " + count, Toast.LENGTH_SHORT).show();
 
                     // if(count>0)
                     // restorePreviousProfile();
@@ -103,7 +103,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
 
 
                 if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
-                    Toast.makeText(context, "IDLE" + count, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "IDLE" + count, Toast.LENGTH_SHORT).show();
 
                     // if(count>0)
                     SharedPreferences sharedPreferences76 = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
@@ -125,7 +125,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
         ringer = sharedPreferences76.getInt("profileType", 3);
 
 
-        Toast.makeText(context, "restore mode " + ringer, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "restore mode " + ringer, Toast.LENGTH_SHORT).show();
 
 
         if (ringer == 0) {
@@ -152,8 +152,8 @@ public class MyExceptionReciever extends BroadcastReceiver {
             vishankManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
         } else if (ringer == AudioManager.RINGER_MODE_VIBRATE) {
             vishankManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-        } else
-            Toast.makeText(context, "YOU Were right", Toast.LENGTH_SHORT).show();
+        } //else
+           // Toast.makeText(context, "YOU Were right", Toast.LENGTH_SHORT).show();
 
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("MyExceptionProfile", context.MODE_PRIVATE);
@@ -185,7 +185,7 @@ public class MyExceptionReciever extends BroadcastReceiver {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-        Toast.makeText(context, " mode " + ringerMode, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context, " mode " + ringerMode, Toast.LENGTH_SHORT).show();
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

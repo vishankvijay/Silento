@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
-    tools:context="com.example.silento.AlarmDetails">
+    tools:context="com.example.silento.AlarmDetails"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <include
         android:id="@+id/toolbar"
@@ -73,7 +75,8 @@
                     android:checked="true"
                     android:gravity="center"
                     app:sw_trackCap="round"
-                    app:sw_trackSize="1dp" />
+                    app:sw_trackSize="10dp"
+                    />
 
             </LinearLayout>
 
@@ -261,7 +264,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                app:cbd_strokeColor="#D56E83" />
+                                app:cbd_strokeColor="@color/primaryColor" />
 
                             <com.rey.material.widget.CheckBox
                                 android:id="@+id/TuesdayUpdateCheckBox"
@@ -277,7 +280,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                app:cbd_strokeColor="#D56E83" />
+                                app:cbd_strokeColor="@color/primaryColor" />
 
                             <com.rey.material.widget.CheckBox
                                 android:id="@+id/thursdayUpdateCheckBox"
@@ -293,7 +296,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                app:cbd_strokeColor="#D56E83" />
+                                app:cbd_strokeColor="@color/primaryColor" />
 
                             <com.rey.material.widget.CheckBox
                                 android:id="@+id/saturdayUpdateCheckBox"
@@ -423,7 +426,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/layout_containing_chechkbox"
                     android:textStyle="bold"
-                    android:text="Start Profile Type :"
+                    android:text="Start Profile mode :"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -469,7 +472,7 @@
                     android:layout_alignStart="@+id/sundayTextView"
                     android:layout_below="@+id/start_profileRadioGroup"
                     android:layout_marginTop="14dp"
-                    android:text="End Profile Type :"
+                    android:text="End Profile mode :"
                     android:textStyle="bold"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />

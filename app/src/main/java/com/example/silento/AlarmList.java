@@ -1,55 +1,32 @@
 package com.example.silento;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.Cursor;
-import android.media.AudioManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
-import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Calendar;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 
 public class AlarmList extends AppCompatActivity {
@@ -92,6 +69,8 @@ public class AlarmList extends AppCompatActivity {
 
     CoordinatorLayout alarmList_coordinator;
 
+    TextView text_hi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +78,6 @@ public class AlarmList extends AppCompatActivity {
 
         /*metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);*/
-
 
 
         instantiate();
@@ -123,7 +101,7 @@ public class AlarmList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AlarmList.this, AlarmDetails.class);
-                startActivityForResult(intent , 1);
+                startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.slide_in_left, 0);
             }
         });
@@ -137,15 +115,45 @@ public class AlarmList extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(data!=null)
-        showSnackbar(data.getStringExtra("name")+" has been added to you Events List.");
+
+        if (data != null) {
+            if (resultCode == Activity.RESULT_OK)
+            {
+                if(requestCode == 1)
+                showSnackbar(data.getStringExtra("name") , requestCode);
+                else
+                    showSnackbar(data.getStringExtra("name") , requestCode);
+            }
+        }
 
 
     }
 
+    public void startUpdateActivity(int position) {
+        Intent intent = new Intent(AlarmList.this, updateAlarmActivity.class);
+        intent.putExtra("position", position);
+        startActivityForResult(intent, 2);
+        overridePendingTransition(R.anim.slide_in_left, 0);
+    }
 
-    public void showSnackbar(String message)
-    {
+
+    public void showSnackbar(String message , int reqCode) {
+
+        if (message.length() > 25)
+        {
+            message = message.substring( 0 , 25) + "...";
+        }
+
+
+        if(reqCode == 1)
+            message = "'" +message+ "'" + "  has been added to your Event List.";
+        else if(reqCode == 2)
+            message = "'" +message+ "'" + "  has been updated.";
+        else
+            message = "'" +message+ "'" + "  has been removed from your Event List.";
+
+
+
         Snackbar.make(alarmList_coordinator, message, Snackbar.LENGTH_LONG)
                 .setAction("Ok", new View.OnClickListener() {
                     @Override
@@ -176,7 +184,7 @@ public class AlarmList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-       task = new GetProfileTask(this);
+        task = new GetProfileTask(this);
         task.execute((Void) null);
 
     }
@@ -192,7 +200,7 @@ public class AlarmList extends AppCompatActivity {
 
         @Override
         protected ArrayList<ProfilesList> doInBackground(Void... params) {
-           // ArrayList<profileParcel> profileParcel1 = new ArrayList<profileParcel>();
+            // ArrayList<profileParcel> profileParcel1 = new ArrayList<profileParcel>();
 
             ArrayList<ProfilesList> profilesListArrayList = new ArrayList<ProfilesList>();
 
@@ -236,7 +244,7 @@ public class AlarmList extends AppCompatActivity {
                     && !activityWeakRef.get().isFinishing()) {
                 //subParcels = empList;
                 //Bundle bundle = new Bundle();
-               // bundle.putParcelableArrayList("array", empList);
+                // bundle.putParcelableArrayList("array", empList);
                 if (empList != null) {
                     if (empList.size() != 0) {
                         recycler_adapter = new recycler_adapter(AlarmList.this,
@@ -246,14 +254,28 @@ public class AlarmList extends AppCompatActivity {
                         alarmRecyclerView.setAdapter(recycler_adapter);
                         //Toast.makeText(AlarmList.this, " not 0", Toast.LENGTH_SHORT).show();
                         setEmptyView(1);
-                    } else
+                        if(empList.size()==1)
+                        showDragtutorial();
+                    }
+                    else
                     {
                         setEmptyView(0);
-                       // Toast.makeText(AlarmList.this, "0", Toast.LENGTH_SHORT).show();
                     }
                 }
 
             }
+        }
+
+        private void showDragtutorial()
+        {
+            new MaterialShowcaseView.Builder(AlarmList.this)
+                    .setTarget(text_hi)
+                    .setDismissText("ok")
+                    .setDismissTextColor(0xffD56E83)
+                    .setContentText("Drag left to get more options.")
+                    .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
+                    .singleUse("alarm_list_1") // provide a unique ID used to ensure it is only shown once
+                    .show();
         }
     }
 
@@ -287,6 +309,7 @@ public class AlarmList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         alarmList_coordinator = (CoordinatorLayout) findViewById(R.id.alarmList_coordinator);
+        text_hi = (TextView) findViewById(R.id.text_hi);
 
         //alarmListview = (ListView) findViewById(R.id.alarm_list);
 
@@ -297,7 +320,7 @@ public class AlarmList extends AppCompatActivity {
         alarmRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState ==  RecyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     fab.show();
                 }
                 super.onScrollStateChanged(recyclerView, newState);
@@ -309,33 +332,31 @@ public class AlarmList extends AppCompatActivity {
                     fab.hide();
             }
         });
-       // alarmRecyclerView.setAdapter(new recycler_adapter(this));
+        // alarmRecyclerView.setAdapter(new recycler_adapter(this));
 
         fab = (FloatingActionButton) findViewById(R.id.alarm_list_fab_button);
 
         //mDrawer = (NavigationView) findViewById(R.id.main_drawer);
-      //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-       // profilesLists_ArrayList = dataBaseManipulator.fetchalarms();
+        // profilesLists_ArrayList = dataBaseManipulator.fetchalarms();
 
     }
 
 
     public void setEmptyView(int size) {
 
-       // Toast.makeText(AlarmList.this, "called", Toast.LENGTH_SHORT).show();
-        if (size == 0)
-        {
+        // Toast.makeText(AlarmList.this, "called", Toast.LENGTH_SHORT).show();
+        if (size == 0) {
             emptyTextView.setVisibility(View.VISIBLE);
             alarmRecyclerView.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             emptyTextView.setVisibility(View.GONE);
             alarmRecyclerView.setVisibility(View.VISIBLE);
         }
 
-        }
+    }
 
 
 
@@ -764,7 +785,7 @@ public class AlarmList extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-       // drawerToggle.onConfigurationChanged(newConfig);
+        // drawerToggle.onConfigurationChanged(newConfig);
 
     }
 
@@ -825,8 +846,7 @@ public class AlarmList extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, 0);
     }
 
-    private void showAlarmSnackbar(String message)
-    {
+    private void showAlarmSnackbar(String message) {
         Snackbar.make(alarmList_coordinator, message, Snackbar.LENGTH_LONG)
                 .setAction("OK", new View.OnClickListener() {
                     @Override
@@ -834,7 +854,7 @@ public class AlarmList extends AppCompatActivity {
 
                     }
                 })
-                .setActionTextColor(getResources().getColor(R.color.mdtp_accent_color ))
+                .setActionTextColor(getResources().getColor(R.color.mdtp_accent_color))
                 .show();
     }
 

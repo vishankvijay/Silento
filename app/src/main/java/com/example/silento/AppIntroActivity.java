@@ -3,6 +3,7 @@ package com.example.silento;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.paolorotolo.appintro.AppIntro;
@@ -10,6 +11,8 @@ import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
 public class AppIntroActivity extends AppIntro2 {
+
+    private ViewPager mPager;
 
     @Override
     public void init(Bundle savedInstanceState)
@@ -24,9 +27,13 @@ public class AppIntroActivity extends AppIntro2 {
 
         addSlide(AppIntroFragment.newInstance("Title 2", "Discription2", R.mipmap.fiftha, R.color.primaryColor));*/
 
+        /*mPager = getPager();
+        mPager.setOffscreenPageLimit(1);*/
+
         FirstFragment firstFragment  = new FirstFragment();
         SecondFragment secondFragment = new SecondFragment();
         ThirdFragment thirdFragment = new ThirdFragment();
+        FragmentShake fragmentShake = new FragmentShake();
         FourthFragment fourthFragment = new FourthFragment();
         FifthFragment fifthFragment = new FifthFragment();
 
@@ -35,6 +42,7 @@ public class AppIntroActivity extends AppIntro2 {
         addSlide(firstFragment);
         addSlide(secondFragment);
         addSlide(thirdFragment);
+        addSlide(fragmentShake);
         addSlide(fourthFragment);
         addSlide(fifthFragment);
 
@@ -54,14 +62,14 @@ public class AppIntroActivity extends AppIntro2 {
 
 
         //setFadeAnimation(); // OR
-        setZoomAnimation(); // OR
+        //setZoomAnimation(); // OR
         //setFlowAnimation(); // OR
         //setSlideOverAnimation(); // OR
         //setDepthAnimation();
 
     }
 
-/*    @Override
+  /*  @Override
     public void onSkipPressed() {
         startActivity(new Intent(AppIntroActivity.this, FirstActivity.class));
         overridePendingTransition(R.anim.slide_in_left, 0);
@@ -87,4 +95,5 @@ public class AppIntroActivity extends AppIntro2 {
     public void onSlideChanged() {
 
     }
+
 }

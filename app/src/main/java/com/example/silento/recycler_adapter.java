@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -35,8 +33,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
         this.context = context;
     }
 */
-    public recycler_adapter(Context context, ArrayList<ProfilesList> arrayList, DisplayMetrics metrics)
-    {
+    public recycler_adapter(Context context, ArrayList<ProfilesList> arrayList, DisplayMetrics metrics) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -79,11 +76,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
         else
             viewHolder.end_profileTypeImageView.setImageResource(R.mipmap.ic_action_normal);
 
-       getRepaetDays(viewHolder, arrayList , position);
-
-
-
-
+        getRepaetDays(viewHolder, arrayList, position);
 
 
         viewHolder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
@@ -141,22 +134,19 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 viewHolder.swipeLayout.close(true);
                 //Toast.makeText(context, "Edit", Toast.LENGTH_SHORT).show();
 
-                Intent updateIntent = new Intent(context, updateAlarmActivity.class);
+             /*   Intent updateIntent = new Intent(context, updateAlarmActivity.class);
                 updateIntent.putExtra("position", position);
-                //id = getIdCursor.getInt(0);
-
-                //updateIntent.putExtra("id" , getIdCursor.getInt(0));
                 context.startActivity(updateIntent);
-                ((AlarmList) context).overridePendingTransition(R.anim.slide_in_left, 0);
+                ((AlarmList) context).overridePendingTransition(R.anim.slide_in_left, 0);*/
 
+                //id = getIdCursor.getInt(0);
+                //updateIntent.putExtra("id" , getIdCursor.getInt(0));
 
-
-
+                ((AlarmList) context).startUpdateActivity(position);
 
 
             }
@@ -166,7 +156,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
             @Override
             public void onClick(View v) {
                 viewHolder.swipeLayout.close(true);
-               // Toast.makeText(context, "Delete " + position  , Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "Delete " + position  , Toast.LENGTH_SHORT).show();
 
 
                 final String alarmTitle_delete = arrayList.get(position).getProfileName();
@@ -186,7 +176,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
                 String last = " ?";
                 //t.setText(Html.fromHtml(first + next));*/
 
-                builder.setMessage(Html.fromHtml("Delete the Event " + alarmTitle_delete + " ?"));
+                builder.setMessage(Html.fromHtml("Remove '" + alarmTitle_delete + "' from Event list?"));
 
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
@@ -198,7 +188,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
                     }
                 });
 
-                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Yeah", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -212,7 +202,9 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position, arrayList.size());
-                        ((AlarmList) context).showSnackbar(alarmTitle_delete+ " has been removed from your Event List.");
+                        ((AlarmList) context).showSnackbar(alarmTitle_delete, 0);
+
+                        ((AlarmList) context).setEmptyView(arrayList.size());
 
 
                         //customListAdapter.remove(profile);
@@ -237,8 +229,6 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
     }
 
 
-
-
     private void getRepaetDays(ProfileViewHolder holder, ArrayList<ProfilesList> profileParcel2, int position) {
         String check;
         check = "prob";
@@ -252,23 +242,26 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
             if (arrayList.get(position).getSun() == 1)
                 check = ",";
-            else if(arrayList.get(position).getSun() == 0)
-                check ="bl";
+            else if (arrayList.get(position).getSun() == 0)
+                check = "bl";
 
             if (arrayList.get(position).getTue() == 0 && arrayList.get(position).getWed() == 0
                     && arrayList.get(position).getThur() == 0 && arrayList.get(position).getFri() == 0
                     && arrayList.get(position).getSat() == 0)
                 check = "or";
 
-            switch (check)
-            {
-                case ",": initial = initial + ", Monday";
+            switch (check) {
+                case ",":
+                    initial = initial + ", Monday";
                     break;
-                case "bl": initial = initial + " Monday";
+                case "bl":
+                    initial = initial + " Monday";
                     break;
-                case "or": initial = initial + " or Monday";
+                case "or":
+                    initial = initial + " or Monday";
                     break;
-                default: initial = " problem ";
+                default:
+                    initial = " problem ";
 
             }
         }
@@ -276,26 +269,28 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
         if (arrayList.get(position).getTue() == 1) {
 
 
-
-            if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon()!=1)
+            if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon() != 1)
                 check = "bl";
             else
-                check =",";
+                check = ",";
 
             if (arrayList.get(position).getWed() == 0
                     && arrayList.get(position).getThur() == 0 && arrayList.get(position).getFri() == 0
                     && arrayList.get(position).getSat() == 0)
                 check = "or";
 
-            switch (check)
-            {
-                case ",": initial = initial + ", Tuesday";
+            switch (check) {
+                case ",":
+                    initial = initial + ", Tuesday";
                     break;
-                case "bl": initial = initial + " Tuesday";
+                case "bl":
+                    initial = initial + " Tuesday";
                     break;
-                case "or": initial = initial + " or Tuesday";
+                case "or":
+                    initial = initial + " or Tuesday";
                     break;
-                default: initial = " problem ";
+                default:
+                    initial = " problem ";
             }
         }
 
@@ -327,7 +322,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
         }
 
         if (arrayList.get(position).getThur() == 1) {
-            if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon() != 1 && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed()!=1)
+            if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon() != 1 && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed() != 1)
                 check = "bl";
             else
                 check = ",";
@@ -353,7 +348,7 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
         if (arrayList.get(position).getFri() == 1) {
             if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon() != 1
-                    && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed()!=1 && arrayList.get(position).getThur()!=1)
+                    && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed() != 1 && arrayList.get(position).getThur() != 1)
                 check = "bl";
             else
                 check = ",";
@@ -378,8 +373,8 @@ public class recycler_adapter extends RecyclerSwipeAdapter<recycler_adapter.Prof
 
         if (arrayList.get(position).getSat() == 1) {
             if (arrayList.get(position).getSun() != 1 && arrayList.get(position).getMon() != 1
-                    && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed()!=1
-                    && arrayList.get(position).getThur()!=1 && arrayList.get(position).getFri()!=1)
+                    && arrayList.get(position).getTue() != 1 && arrayList.get(position).getWed() != 1
+                    && arrayList.get(position).getThur() != 1 && arrayList.get(position).getFri() != 1)
                 check = "bl";
             else
                 check = "or";

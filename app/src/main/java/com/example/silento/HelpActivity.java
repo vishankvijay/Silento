@@ -51,7 +51,7 @@ public class HelpActivity extends AppCompatActivity {
     {
         new MaterialShowcaseView.Builder(this)
                 .setTarget(event_title)
-                .setDismissText("GOT IT")
+                .setDismissText("OK")
                 .setContentText("Click on any of the items to know more about them.")
                 .setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
                 .singleUse("help_1") // provide a unique ID used to ensure it is only shown once

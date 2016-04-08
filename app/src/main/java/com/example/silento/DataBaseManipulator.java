@@ -18,7 +18,7 @@ import java.util.Calendar;
 public class DataBaseManipulator {
 
     private static final String DATABASE_NAME = "dataBase";
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 13;
     public static final String TABLE_NAME1 = "alarm";
     public static final String TABLE_NAME2 = "exception";
     private static Context context;
@@ -101,7 +101,7 @@ public class DataBaseManipulator {
 
     public Cursor fetchException()
     {
-        return db.query(TABLE_NAME2, null, null, null, null, null, null);
+        return db.query(TABLE_NAME2, null, null, null, null, null, "id"+" DESC");
     }
 
 
