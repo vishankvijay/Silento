@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="com.example.silento.HelpActivity">
+    tools:context="my.awesome.silento.HelpActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Silento automatically silences your phone based on your weekly schedule.\n\nYou just have to create an event, give it a name , give it a time range , and select which days of the week you have the event . You also have to select the start and end profile type.\n\nYou will be notified every time the event occurs and your profile is changed.\n\nThat's all!"
+                    android:text="Silento! automatically silences your phone based on your weekly schedule.\n\nYou just have to create an event, give it a name and a time range  and select which days of the week you have the event . You also have to select the start and end profile type.\n\nYou will be notified every time the event occurs and your profile is changed.\n\nThat's all you have to do!"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -144,7 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Events section will manage all of your daily schedule.\nBut what if something unscheduled comes up like meetings and movies??\n\nDon't worry we've got your back!\nYou can use the Quick Silento feature to silent/vibrate your device for whatever else might come up.\n\nJust set the time range and select the profile type you want for that time range and we will quickly manage your profile."
+                    android:text="Events section will manage all of your daily schedule.\nBut what if something unscheduled comes up like meetings and movies??\n\nDon't worry we've got your back!\nYou can use the Quick Silento! feature to silent/vibrate your device for whatever else might come up.\n\nJust set the time range and select the profile type you want for that time range and we will quickly manage your profile."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -187,7 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Shake Silento! allows you to change your profile just by Shaking your device.\n\nJust select your desired shake sensivity and set the profile you want when you shake you device\n\nWe also provide a quick and easy way to turn this feature off."
+                    android:text="Shake Silento! allows you to change your profile simply by Shaking your device.\n\nJust select your desired shake level and set the profile you want when you shake you device\n\nWe also provide a quick and easy way to turn this feature off."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -229,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Exceptions lets certain callers ring through even with your phone in silent/vibrate mode.\n\nAdd as many numbers as you want to the Exceptions list and they'll ring regardless of the phones ringer setting.\n\nWe also provide a quick and easy way to turn this feature off."
+                    android:text="Exceptions lets certain callers ring through even with your phone in silent/vibrate mode.\n\nAdd as many numbers as you want to the Exceptions list and they will ring regardless of the phone's ringer setting.\n\nWe also provide a quick and easy way to turn this feature off."
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -271,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Besides all these features, you still have a support team ready to assist you and listen your suggestions.\n\nJust go to Settings -> Feedback and send us your suggestions or questions and we will get in touch with you."
+                    android:text="Besides all these features, you still have a support team ready to assist you and listen to your suggestions.\n\nJust go to Silento! -> Settings -> Feedback and send us your suggestions or questions and we will get in touch with you."
                     android:textSize="15sp" />
 
             </LinearLayout>

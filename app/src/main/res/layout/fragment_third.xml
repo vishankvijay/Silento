@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B0BEC5"
-    tools:context="com.example.silento.ThirdFragment">
+    tools:context="my.awesome.silento.ThirdFragment">
 
 
     <RelativeLayout
@@ -34,15 +34,15 @@
 
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/text_third_frag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Silento automatically silences your phone based on your everyday schedule through a simple and friendly interface."
+                android:text="Silento! automatically silences your phone based on your everyday schedule through a simple and friendly interface."
                 android:textColor="#fff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="18dp"
+                android:textStyle="bold|italic" />
 
 
 
@@ -63,23 +63,6 @@
 
     </RelativeLayout>
 
- <!--   <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Silento automatically silences your phone based on your weekly schedule through a simple and friendly interface."
-        android:textColor="#fff"
-        android:textSize="20dp"
-        android:textStyle="bold" />-->
-<!--
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:src="@drawable/intro_third" />-->
 
 
 </FrameLayout>

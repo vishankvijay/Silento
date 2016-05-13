@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="com.example.silento.upcomingFeaturesActivity">
+    tools:context="my.awesome.silento.upcomingFeaturesActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -42,7 +42,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/feature1_frameLayout"
             android:layout_alignTop="@+id/feature1_frameLayout"
-            android:text="Save your location via Silento and your profile will automatically be changed whenever you go there."
+            android:text="Save your location via Silento! and your profile will automatically be changed whenever you go there."
             android:layout_toRightOf="@+id/feature1_frameLayout"
 
             />

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80CBC4"
-    tools:context="com.example.silento.FourthFragment">
+    tools:context="my.awesome.silento.FourthFragment">
 
 
     <RelativeLayout
@@ -34,8 +34,8 @@
                 android:padding="10dp"
                 android:text="You can also add exceptions for important callers and never miss a call from your loved ones."
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textStyle="italic|bold" />
 
         </android.support.v7.widget.CardView>
 

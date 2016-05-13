@@ -3,25 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    android:background="@color/mdtp_accent_color"
     android:orientation="vertical"
-    tools:context="com.example.silento.aboutActivity">
+    tools:context="my.awesome.silento.aboutActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/action_bar"/>
+
 
 
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@mipmap/ic_silento_logo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/logo_main"
         android:id="@+id/logo"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
 
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Developer :\nVishank Vijay Fidelis\nvvishank@gmail.com"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:textColor="#fff"
+    android:textSize="16dp"
+    android:textStyle="bold"
+    android:autoLink="email"
+    android:textColorLink="#fff"
+    android:gravity="center"
+    android:layout_marginBottom="12dp"/>
 
 </RelativeLayout>

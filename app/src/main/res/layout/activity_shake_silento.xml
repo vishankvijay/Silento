@@ -5,7 +5,7 @@
     android:id="@+id/activity_shake_silento_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.silento.shakeSilentoActivity">
+    tools:context="my.awesome.silento.shakeSilentoActivity">
 
 
     <RelativeLayout
@@ -115,7 +115,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
                             android:padding="10dp"
-                            android:text="  Select your desired shake sensivity  "
+                            android:text="     Select your desired shake Level     "
                             android:textColor="#000"
                             android:textStyle="normal"
                             android:textSize="15sp"/>

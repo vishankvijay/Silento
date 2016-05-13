@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80CBC4"
-    tools:context="com.example.silento.SecondFragment">
+    tools:context="my.awesome.silento.SecondFragment">
 
 
 
@@ -30,14 +30,16 @@
 
             <!--C8E6C9-->
             <TextView
+                android:id="@+id/text_second_frag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Your search for an app that can save you from the embarrasement is now over."
+                android:text="Your search for an app that can save you from the embarrassment is now over."
                 android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                />
 
         </android.support.v7.widget.CardView>
 

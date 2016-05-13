@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFAB91"
-    tools:context="com.example.silento.FirstFragment">
+    tools:context="my.awesome.silento.FirstFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -40,8 +40,9 @@
                     android:padding="10dp"
                     android:text="Do you often go through the embarrassment of having your phone ringing at the wrong times?"
                     android:textColor="#fff"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="18dp"
+                    android:textStyle="bold|italic"
+                    />
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.silento">
+    package="my.awesome.silento">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -19,24 +20,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_silento_logo"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
 
 
         <service
-            android:name=".MyAlarm"
+            android:name="my.awesome.silento.MyAlarm"
             android:enabled="true"
             android:isolatedProcess="false"
             android:stopWithTask="false" />
         <service
-            android:name=".shakeService2"
+            android:name="my.awesome.silento.shakeService2"
             android:enabled="true"
             android:isolatedProcess="false"
             android:stopWithTask="false" />
 
-        <service android:name=".NotificationListenerService"
+        <service
+            android:name="my.awesome.silento.RingtoneManagerService"
+            android:enabled="true"
+            android:isolatedProcess="false"
+            android:stopWithTask="false" />
+
+        <service android:name="my.awesome.silento.NotificationListenerService"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
@@ -45,10 +52,10 @@
         </service>
 
         <activity
-            android:name=".AlarmList"
+            android:name="my.awesome.silento.AlarmList"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:parentActivityName=".AlarmList">
+            android:parentActivityName="my.awesome.silento.AlarmList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,9 +63,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".MyAlarmBroadcast" />
+        <receiver android:name="my.awesome.silento.MyAlarmBroadcast" />
         <receiver
-            android:name=".BootSetAlarmBroadcastReciever"
+            android:name="my.awesome.silento.BootSetAlarmBroadcastReciever"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -71,7 +78,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".MyExceptionReciever"
+            android:name="my.awesome.silento.MyExceptionReciever"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -80,49 +87,49 @@
         </receiver>
 
         <activity
-            android:name=".AlarmDetails"
+            android:name="my.awesome.silento.AlarmDetails"
             android:label="@string/title_activity_alarm_details"
-            android:parentActivityName=".AlarmDetails"
+            android:parentActivityName="my.awesome.silento.AlarmDetails"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".updateAlarmActivity"
+            android:name="my.awesome.silento.updateAlarmActivity"
             android:label="@string/title_activity_update_alarm"
-            android:parentActivityName=".updateAlarmActivity"
+            android:parentActivityName="my.awesome.silento.updateAlarmActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".feedBackActivity"
+            android:name="my.awesome.silento.feedBackActivity"
             android:label="@string/title_activity_feed_back"
-            android:parentActivityName=".feedBackActivity"
+            android:parentActivityName="my.awesome.silento.feedBackActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".aboutActivity"
+            android:name="my.awesome.silento.aboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".aboutActivity"
+            android:parentActivityName="my.awesome.silento.aboutActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".upcomingFeaturesActivity"
+            android:name="my.awesome.silento.upcomingFeaturesActivity"
             android:label="@string/title_activity_upcoming_features"
-            android:parentActivityName=".upcomingFeaturesActivity"
+            android:parentActivityName="my.awesome.silento.upcomingFeaturesActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".ExceptionActiviy"
+            android:name="my.awesome.silento.ExceptionActiviy"
             android:label="@string/title_activity_exception_activiy"
-            android:parentActivityName=".ExceptionActiviy"
+            android:parentActivityName="my.awesome.silento.ExceptionActiviy"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name=".FirstActivity"
+            android:name="my.awesome.silento.FirstActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
@@ -132,23 +139,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".shakeSilentoActivity"
-            android:parentActivityName=".shakeSilentoActivity"
+            android:name="my.awesome.silento.shakeSilentoActivity"
+            android:parentActivityName="my.awesome.silento.shakeSilentoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".QuickSilentoActivity"
-            android:parentActivityName=".QuickSilentoActivity"
+            android:name="my.awesome.silento.QuickSilentoActivity"
+            android:parentActivityName="my.awesome.silento.QuickSilentoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="my.awesome.silento.SettingsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".SettingsActivity"
+            android:parentActivityName="my.awesome.silento.SettingsActivity"
             />
-        <activity android:name=".AppIntroActivity"
+        <activity android:name="my.awesome.silento.AppIntroActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".HelpActivity"
-            android:parentActivityName=".HelpActivity"
+        <activity android:name="my.awesome.silento.HelpActivity"
+            android:parentActivityName="my.awesome.silento.HelpActivity"
             android:screenOrientation="portrait" />
     </application>
 

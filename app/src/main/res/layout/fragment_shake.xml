@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFAB91"
-    tools:context="com.example.silento.FirstFragment">
+    tools:context="my.awesome.silento.FirstFragment">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -40,8 +40,9 @@
                 android:padding="10dp"
                 android:text="Silento! also provides you with the ability of changing your profile by just shaking your phone."
                 android:textColor="#fff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="18dp"
+                android:textStyle="bold|italic"
+                />
 
 
 
@@ -57,7 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/carview_shake"
             android:scaleType="fitCenter"
-            android:src="@drawable/intro_third" />
+            android:src="@drawable/intro_third"
+            />
 
 
     </RelativeLayout>
